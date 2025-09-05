@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services | FRIMPS Global Geospatial Solutions</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation (consistent with other pages) -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <img src="images/logo/logo.png" alt="FGGS Logo" height="80" />
+          </a>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="services.html" class="nav-link active">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="media.html" class="nav-link">Media & Recognition</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link contact-btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+      <div class="hero-content">
+        <h1 class="hero-title animate__animated animate__fadeInDown">
+          Geospatial Solutions for Sustainable Development
+        </h1>
+        <p
+          class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          Advanced GIS, remote sensing, and environmental data expertise
+          tailored to your specific challenges
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="service-animation" id="serviceAnimation">
+          <div class="map-layer" id="mapLayer"></div>
+          <div class="data-points" id="dataPoints"></div>
+          <div class="analysis-layer" id="analysisLayer"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="services-overview">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Specialized Services</h2>
+          <p>
+            Comprehensive geospatial solutions tailored to address complex
+            environmental and developmental challenges
+          </p>
+        </div>
+        <div class="services-grid">
+          <div
+            class="service-category animate__animated"
+            data-animation="animate__fadeInUp"
+          >
+            <div class="category-icon">
+              <img src="images/icons/gis-mapping.svg" alt="GIS Mapping" />
+            </div>
+            <h3>GIS Mapping & Analysis</h3>
+            <p>
+              Advanced geographic information systems for spatial data analysis,
+              visualization, and decision support
+            </p>
+            <a href="#gis-mapping" class="category-link"
+              >Explore GIS Services</a
+            >
+          </div>
+          <div
+            class="service-category animate__animated"
+            data-animation="animate__fadeInUp animate__delay-1s"
+          >
+            <div class="category-icon">
+              <img src="images/icons/remote-sensing.svg" alt="Remote Sensing" />
+            </div>
+            <h3>Remote Sensing</h3>
+            <p>
+              Satellite and aerial imagery processing and interpretation for
+              various applications
+            </p>
+            <a href="#remote-sensing" class="category-link"
+              >Explore Remote Sensing</a
+            >
+          </div>
+          <div
+            class="service-category animate__animated"
+            data-animation="animate__fadeInUp animate__delay-2s"
+          >
+            <div class="category-icon">
+              <img
+                src="images/icons/environmental-data.svg"
+                alt="Environmental Data"
+              />
+            </div>
+            <h3>Environmental Data Solutions</h3>
+            <p>
+              Data collection, analysis, and modeling for environmental
+              assessment and monitoring
+            </p>
+            <a href="#environmental-data" class="category-link"
+              >Explore Environmental Solutions</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed GIS Services Section -->
+    <section id="gis-mapping" class="detailed-services">
+      <div class="container">
+        <div class="service-header">
+          <h2>GIS Mapping & Spatial Analysis</h2>
+          <p>
+            Transforming spatial data into actionable intelligence for informed
+            decision-making
+          </p>
+        </div>
+        <div class="service-details">
+          <div class="service-content">
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/custom-mapping.svg"
+                  alt="Custom Mapping"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Custom Map Production</h3>
+                <p>
+                  Tailored cartographic products for various applications
+                  including land use planning, infrastructure development, and
+                  resource management.
+                </p>
+                <ul>
+                  <li>Thematic mapping for specific sectoral needs</li>
+                  <li>3D visualization and modeling</li>
+                  <li>Interactive web mapping applications</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/spatial-analysis.svg"
+                  alt="Spatial Analysis"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Spatial Analysis & Modeling</h3>
+                <p>
+                  Advanced geospatial analysis to extract meaningful insights
+                  from complex spatial data.
+                </p>
+                <ul>
+                  <li>Site suitability and location analysis</li>
+                  <li>Network and routing analysis</li>
+                  <li>Spatial statistics and pattern analysis</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/data-management.svg"
+                  alt="Data Management"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Geospatial Data Management</h3>
+                <p>
+                  Comprehensive spatial data infrastructure development and
+                  management solutions.
+                </p>
+                <ul>
+                  <li>Spatial database design and implementation</li>
+                  <li>Data conversion and migration</li>
+                  <li>Quality assurance and standardization</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="service-visual">
+            <div
+              class="visual-container animate__animated"
+              data-animation="animate__fadeInLeft"
+            >
+              <img
+                src="images/services/gis-analysis.jpg"
+                alt="GIS Analysis"
+                class="service-image"
+              />
+              <div class="visual-overlay">
+                <h4>GIS Applications Across Sectors</h4>
+                <div class="sector-list">
+                  <div class="sector-item">Urban Planning</div>
+                  <div class="sector-item">Agriculture</div>
+                  <div class="sector-item">Natural Resource Management</div>
+                  <div class="sector-item">Infrastructure Development</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Remote Sensing Services Section -->
+    <section id="remote-sensing" class="detailed-services alt">
+      <div class="container">
+        <div class="service-header">
+          <h2>Remote Sensing & Imagery Analysis</h2>
+          <p>
+            Harnessing satellite and aerial imagery for environmental monitoring
+            and resource management
+          </p>
+        </div>
+        <div class="service-details">
+          <div class="service-visual">
+            <div
+              class="visual-container animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <img
+                src="images/services/remote-sensing.jpg"
+                alt="Remote Sensing"
+                class="service-image"
+              />
+              <div class="visual-overlay">
+                <h4>Remote Sensing Capabilities</h4>
+                <div class="tech-list">
+                  <div class="tech-item">Multispectral Analysis</div>
+                  <div class="tech-item">Change Detection</div>
+                  <div class="tech-item">Thermal Imaging</div>
+                  <div class="tech-item">LiDAR Processing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInLeft"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/image-processing.svg"
+                  alt="Image Processing"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Image Processing & Analysis</h3>
+                <p>
+                  Advanced processing of satellite and aerial imagery to extract
+                  valuable information.
+                </p>
+                <ul>
+                  <li>Image enhancement and correction</li>
+                  <li>Feature extraction and classification</li>
+                  <li>Vegetation and land cover mapping</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInLeft"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/change-detection.svg"
+                  alt="Change Detection"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Change Detection & Monitoring</h3>
+                <p>
+                  Temporal analysis of imagery to identify and quantify
+                  environmental changes.
+                </p>
+                <ul>
+                  <li>Deforestation and land use change monitoring</li>
+                  <li>Urban expansion analysis</li>
+                  <li>Disaster impact assessment</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInLeft"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/spectral-analysis.svg"
+                  alt="Spectral Analysis"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Spectral Analysis</h3>
+                <p>
+                  Utilizing spectral signatures for material identification and
+                  condition assessment.
+                </p>
+                <ul>
+                  <li>Mineral and resource exploration</li>
+                  <li>Crop health assessment</li>
+                  <li>Water quality monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environmental Data Solutions Section -->
+    <section id="environmental-data" class="detailed-services">
+      <div class="container">
+        <div class="service-header">
+          <h2>Environmental Data Solutions</h2>
+          <p>
+            Comprehensive environmental monitoring and assessment through
+            advanced data analytics
+          </p>
+        </div>
+        <div class="service-details">
+          <div class="service-content">
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/environmental-assessment.svg"
+                  alt="Environmental Assessment"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Environmental Impact Assessment</h3>
+                <p>
+                  Comprehensive assessment of potential environmental impacts of
+                  development projects.
+                </p>
+                <ul>
+                  <li>Baseline environmental data collection</li>
+                  <li>Impact prediction and evaluation</li>
+                  <li>Mitigation measure development</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/climate-resilience.svg"
+                  alt="Climate Resilience"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Climate Resilience Planning</h3>
+                <p>
+                  Geospatial solutions for climate change adaptation and
+                  resilience building.
+                </p>
+                <ul>
+                  <li>Vulnerability and risk assessment</li>
+                  <li>Climate scenario modeling</li>
+                  <li>Adaptation planning support</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="service-point animate__animated"
+              data-animation="animate__fadeInRight"
+            >
+              <div class="point-icon">
+                <img
+                  src="images/icons/natural-resources.svg"
+                  alt="Natural Resources"
+                />
+              </div>
+              <div class="point-content">
+                <h3>Natural Resource Management</h3>
+                <p>
+                  Sustainable management of natural resources through geospatial
+                  technology.
+                </p>
+                <ul>
+                  <li>Forest resource monitoring</li>
+                  <li>Water resource assessment</li>
+                  <li>Biodiversity conservation planning</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="service-visual">
+            <div
+              class="visual-container animate__animated"
+              data-animation="animate__fadeInLeft"
+            >
+              <img
+                src="images/services/environmental-monitoring.jpg"
+                alt="Environmental Monitoring"
+                class="service-image"
+              />
+              <div class="visual-overlay">
+                <h4>Environmental Applications</h4>
+                <div class="application-list">
+                  <div class="application-item">EIA &amp; SEA</div>
+                  <div class="application-item">Carbon Accounting</div>
+                  <div class="application-item">Ecosystem Services</div>
+                  <div class="application-item">Sustainable Development</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+      <div class="container">
+        <div class="section-header">
+          <h2>Project Case Studies</h2>
+          <p>
+            Real-world applications of our geospatial expertise across various
+            sectors
+          </p>
+        </div>
+        <div class="case-studies-grid">
+          <div
+            class="case-study animate__animated"
+            data-animation="animate__fadeInUp"
+          >
+            <div class="case-image">
+              <img
+                src="images/cases/urban-planning.jpg"
+                alt="Urban Planning Project"
+              />
+              <div class="case-overlay">
+                <h4>Accra Urban Expansion Analysis</h4>
+                <p>
+                  Geospatial analysis of urban growth patterns and
+                  infrastructure planning
+                </p>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Urban Planning Support</h3>
+              <p class="case-desc">
+                Comprehensive analysis of urban expansion patterns in Greater
+                Accra Region to support sustainable city planning.
+              </p>
+              <div class="case-stats">
+                <div class="case-stat">
+                  <span class="stat-number">40%</span>
+                  <span class="stat-label"
+                    >Increase in Planning Efficiency</span
+                  >
+                </div>
+                <div class="case-stat">
+                  <span class="stat-number">15</span>
+                  <span class="stat-label">Communities Served</span>
+                </div>
+              </div>
+              <a href="#" class="case-link">View Full Case Study</a>
+            </div>
+          </div>
+          <div
+            class="case-study animate__animated"
+            data-animation="animate__fadeInUp animate__delay-1s"
+          >
+            <div class="case-image">
+              <img
+                src="images/cases/agriculture.jpg"
+                alt="Agricultural Project"
+              />
+              <div class="case-overlay">
+                <h4>Crop Health Monitoring System</h4>
+                <p>
+                  Satellite-based monitoring for Ghana's agricultural sector
+                </p>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Agricultural Monitoring</h3>
+              <p class="case-desc">
+                Development of a satellite-based crop health monitoring system
+                for Ghana's cocoa production regions.
+              </p>
+              <div class="case-stats">
+                <div class="case-stat">
+                  <span class="stat-number">30%</span>
+                  <span class="stat-label">Yield Prediction Improvement</span>
+                </div>
+                <div class="case-stat">
+                  <span class="stat-number">5K+</span>
+                  <span class="stat-label">Farmers Benefited</span>
+                </div>
+              </div>
+              <a href="#" class="case-link">View Full Case Study</a>
+            </div>
+          </div>
+          <div
+            class="case-study animate__animated"
+            data-animation="animate__fadeInUp animate__delay-2s"
+          >
+            <div class="case-image">
+              <img
+                src="images/cases/environmental.jpg"
+                alt="Environmental Project"
+              />
+              <div class="case-overlay">
+                <h4>Forest Cover Change Assessment</h4>
+                <p>Monitoring deforestation patterns in protected areas</p>
+              </div>
+            </div>
+            <div class="case-content">
+              <h3>Environmental Conservation</h3>
+              <p class="case-desc">
+                Comprehensive assessment of forest cover changes in Ghana's
+                protected areas using multi-temporal satellite imagery.
+              </p>
+              <div class="case-stats">
+                <div class="case-stat">
+                  <span class="stat-number">95%</span>
+                  <span class="stat-label">Accuracy Achieved</span>
+                </div>
+                <div class="case-stat">
+                  <span class="stat-number">12</span>
+                  <span class="stat-label">Protected Areas Monitored</span>
+                </div>
+              </div>
+              <a href="#" class="case-link">View Full Case Study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Approach</h2>
+          <p>
+            Structured methodology for delivering effective geospatial solutions
+          </p>
+        </div>
+        <div class="process-steps">
+          <div
+            class="process-step animate__animated"
+            data-animation="animate__fadeInUp"
+          >
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Requirement Analysis</h3>
+              <p>
+                Comprehensive understanding of client needs and project
+                objectives through detailed consultation.
+              </p>
+            </div>
+          </div>
+          <div
+            class="process-step animate__animated"
+            data-animation="animate__fadeInUp animate__delay-1s"
+          >
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Data Acquisition & Preparation</h3>
+              <p>
+                Collection of relevant spatial data from various sources and
+                preprocessing for analysis.
+              </p>
+            </div>
+          </div>
+          <div
+            class="process-step animate__animated"
+            data-animation="animate__fadeInUp animate__delay-2s"
+          >
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>Analysis & Modeling</h3>
+              <p>
+                Application of advanced geospatial techniques to extract
+                insights and develop solutions.
+              </p>
+            </div>
+          </div>
+          <div
+            class="process-step animate__animated"
+            data-animation="animate__fadeInUp animate__delay-3s"
+          >
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Implementation & Delivery</h3>
+              <p>
+                Deployment of solutions and delivery of actionable intelligence
+                to clients.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>
+            Ready to Transform Your Spatial Data into Actionable Intelligence?
+          </h2>
+          <p>
+            Contact us to discuss how our geospatial solutions can address your
+            specific challenges and drive informed decision-making.
+          </p>
+          <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#" class="btn btn-secondary">View Our Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (consistent with other pages) -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="images/logo/logo.png" alt="FGGS Logo" height="60" />
+          <p>
+            Transforming data into geospatial intelligence for sustainable
+            development and decision-making.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#media">Media & Recognition</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">GIS Mapping</a></li>
+            <li><a href="#">Remote Sensing</a></li>
+            <li><a href="#">Environmental Data</a></li>
+            <li><a href="#">Geospatial Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#"><img src="images/linkedin-icon.sv" alt="LinkedIn" /></a>
+            <a href="#"><img src="images/twitter-icon.svg" alt="Twitter" /></a>
+            <a href="#"
+              ><img src="images/facebook-icon.svg" alt="Facebook"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 FRIMPS Global Geospatial Solutions. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/services-scripts.js"></script>
+  </body>
+</html>

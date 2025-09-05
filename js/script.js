@@ -596,3 +596,87 @@ function initServicesInteractions() {
     });
   });
 }
+
+// Trophy Animation JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+  const trophyAnimation = document.getElementById("trophyAnimation");
+
+  // Create trophy elements
+  const trophy = document.createElement("div");
+  trophy.className = "trophy";
+
+  const trophyBase = document.createElement("div");
+  trophyBase.className = "trophy-base";
+
+  const trophyCup = document.createElement("div");
+  trophyCup.className = "trophy-cup";
+
+  const trophyHandles = document.createElement("div");
+  trophyHandles.className = "trophy-handles";
+
+  const trophyStar = document.createElement("div");
+  trophyStar.className = "trophy-star";
+  trophyStar.innerHTML = "⭐"; // Using star emoji instead of Font Awesome
+
+  const shine = document.createElement("div");
+  shine.className = "shine";
+
+  // Add elements to the trophy
+  trophyCup.appendChild(shine);
+  trophy.appendChild(trophyBase);
+  trophy.appendChild(trophyCup);
+  trophy.appendChild(trophyHandles);
+  trophy.appendChild(trophyStar);
+
+  // Add trophy to the container
+  trophyAnimation.appendChild(trophy);
+
+  // Create sparkles
+  for (let i = 0; i < 15; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    trophyAnimation.appendChild(sparkle);
+  }
+
+  // Animate the trophy
+  trophy.style.animation = "rotate 8s infinite linear";
+  trophyStar.style.animation = "float 3s infinite ease-in-out";
+
+  // Animate sparkles
+  const sparkles = document.querySelectorAll(".sparkle");
+  sparkles.forEach((sparkle) => {
+    // Random position
+    const x = Math.random() * 280;
+    const y = 50 + Math.random() * 180;
+
+    // Random size
+    const size = 4 + Math.random() * 6;
+
+    // Random delay
+    const delay = Math.random() * 5;
+
+    // Random duration
+    const duration = 2 + Math.random() * 3;
+
+    sparkle.style.left = `${x}px`;
+    sparkle.style.top = `${y}px`;
+    sparkle.style.width = `${size}px`;
+    sparkle.style.height = `${size}px`;
+    sparkle.style.animation = `sparkle ${duration}s ${delay}s infinite`;
+  });
+
+  // Add interactive element - pause rotation on hover
+  trophyAnimation.addEventListener("mouseenter", () => {
+    trophy.style.animationPlayState = "paused";
+    sparkles.forEach((sparkle) => {
+      sparkle.style.animationPlayState = "paused";
+    });
+  });
+
+  trophyAnimation.addEventListener("mouseleave", () => {
+    trophy.style.animationPlayState = "running";
+    sparkles.forEach((sparkle) => {
+      sparkle.style.animationPlayState = "running";
+    });
+  });
+});

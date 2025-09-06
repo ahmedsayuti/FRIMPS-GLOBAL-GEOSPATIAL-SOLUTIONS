@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Services | FRIMPS Global Geospatial Solutions</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/services.css" />
+    <title>FRIMPS Global Geospatial Solutions</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -14,9 +12,1375 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Base styles and variables */
+      :root {
+        --primary-blue: #0a4a7a;
+        --secondary-blue: #1c6ea5;
+        --accent-green: #2a9d8f;
+        --dark-green: #1d5850;
+        --light-beige: #f4f1de;
+        --dark-text: #333333;
+        --light-text: #ffffff;
+        --gray-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0.5;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        transform: translateY(-2px);
+      }
+
+      /* Navigation styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-green);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .contact-btn {
+        background-color: var(--accent-green);
+        color: white;
+        padding: 8px 20px;
+        border-radius: var(--border-radius);
+      }
+
+      .contact-btn:hover {
+        background-color: var(--dark-green);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-blue);
+        margin: 3px 0;
+        transition: var(--transition);
+        display: block;
+      }
+
+      /* Hero section styles */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-blue);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        color: var(--dark-text);
+        max-width: 90%;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .animated-globe {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          var(--secondary-blue) 0%,
+          var(--primary-blue) 60%
+        );
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(42, 157, 143, 0.3);
+      }
+
+      .animated-globe::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='%23ffffff' fill-opacity='0.3' d='M769,229L1037,260.9C928,280,818,359,766.2,487.2C714.4,615.4,724.8,786.9,767,919.5C809.2,1052.1,883.4,1145.8,1017,1165C1150.6,1184.2,1343.8,1128.8,1422,1030.7C1500.2,932.6,1463.4,791.7,1423,666.9C1382.6,542.1,1338.4,433.4,1293,361.6C1247.6,289.8,1201,254.9,1135,254.9C1069,254.9,983.4,289.8,908.3,361.6C833.2,433.4,768.6,542.1,727.2,666.9C685.8,791.7,667.6,932.6,683.4,1030.7C699.2,1128.8,749,1184.2,824.8,1165C900.6,1145.8,1002.4,1052.1,1011,919.5C1019.6,786.9,936.2,615.4,890.4,487.2C844.6,359,836.4,280,769,229Z'%3E%3C/path%3E%3C/svg%3E")
+          no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+
+      /* Section common styles */
+      section {
+        padding: 7rem 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: var(--dark-text);
+      }
+
+      /* Services section */
+      .services {
+        background-color: var(--gray-bg);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background-color: rgba(42, 157, 143, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .service-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .service-card h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .service-link {
+        color: var(--accent-green);
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .service-link:hover {
+        color: var(--dark-green);
+      }
+
+      /* About section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        color: var(--primary-blue);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--dark-text);
+      }
+
+      .about-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-img {
+        width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(10, 74, 122, 0.7),
+          rgba(42, 157, 143, 0.7)
+        );
+        border-radius: var(--border-radius);
+        opacity: 0.3;
+      }
+
+      /* Media section */
+      .media-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .news-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .news-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .news-date {
+        color: var(--accent-green);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .badges {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        text-align: center;
+      }
+
+      .badge img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Contact section */
+      .contact {
+        background-color: var(--gray-bg);
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-family: "Open Sans", sans-serif;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accept-green);
+        box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        padding: 4rem 2rem 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: var(--light-text);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-section ul li a {
+        transition: var(--transition);
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--accent-green);
+        padding-left: 5px;
+      }
+
+      /* Social Icons - Fixed styling */
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+
+      .social-icon:hover {
+        background-color: var(--accent-green);
+        transform: translateY(-3px);
+      }
+
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Responsive design */
+      @media screen and (max-width: 968px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 8rem;
+        }
+
+        .hero-subtitle {
+          max-width: 100%;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-stats {
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: white;
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          padding: 2rem 0;
+          gap: 0;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 1.5rem 0;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .animated-globe {
+          width: 300px;
+          height: 300px;
+        }
+
+        .media-content {
+          grid-template-columns: 1fr;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+
+      /* Additional styles for About page */
+      .mission-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--secondary-blue) 100%
+        );
+        color: white;
+      }
+
+      .mission-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .mission-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+
+      .mission-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        display: block;
+        color: var(--accent-green);
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      /* Team Section */
+      .team-section {
+        padding: 5rem 2rem;
+        background-color: var(--gray-bg);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .team-member {
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .member-image {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .member-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 74, 122, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .team-member:hover .member-overlay {
+        opacity: 1;
+      }
+
+      .team-member:hover .member-image img {
+        transform: scale(1.1);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        display: inline-block;
+        padding: 0.8rem;
+        background: white;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        transform: translateY(-5px);
+        background: var(--accent-green);
+      }
+
+      .member-info {
+        padding: 2rem;
+      }
+
+      .member-info h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .position {
+        color: var(--accent-green);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .bio {
+        color: var(--dark-text);
+        line-height: 1.6;
+      }
+
+      /* Timeline Section */
+      .timeline-section {
+        padding: 5rem 2rem;
+        background: white;
+      }
+
+      .timeline {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: var(--accent-green);
+      }
+
+      .timeline-item {
+        display: flex;
+        margin-bottom: 4rem;
+        position: relative;
+        width: 100%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      .timeline-year {
+        flex: 1;
+        padding: 0 2rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .timeline-content {
+        flex: 1;
+        padding: 2rem;
+        background: var(--gray-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .timeline-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Values Section */
+      .values-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--dark-green) 0%,
+          var(--accent-green) 100%
+        );
+        color: white;
+        display: none; /* Hide for now as we're focusing on Services page */
+      }
+
+      /* Additional styles for Services page */
+      .services-hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .service-animation {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .map-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cpath fill='%231c6ea5' fill-opacity='0.1' d='M769,229L1037,260.9C928,280,818,359,766.2,487.2C714.4,615.4,724.8,786.9,767,919.5C809.2,1052.1,883.4,1145.8,1017,1165C1150.6,1184.2,1343.8,1128.8,1422,1030.7C1500.2,932.6,1463.4,791.7,1423,666.9C1382.6,542.1,1338.4,433.4,1293,361.6C1247.6,289.8,1201,254.9,1135,254.9C1069,254.9,983.4,289.8,908.3,361.6C833.2,433.4,768.6,542.1,727.2,666.9C685.8,791.7,667.6,932.6,683.4,1030.7C699.2,1128.8,749,1184.2,824.8,1165C900.6,1145.8,1002.4,1052.1,1011,919.5C1019.6,786.9,936.2,615.4,890.4,487.2C844.6,359,836.4,280,769,229Z'%3E%3C/path%3E%3C/svg%3E");
+        opacity: 0.3;
+      }
+
+      .data-points {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .data-points::before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--accent-green);
+        border-radius: 50%;
+        top: 30%;
+        left: 40%;
+        box-shadow: 0 0 15px var(--accent-green);
+        animation: pulse 2s infinite;
+      }
+
+      .data-points::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        top: 50%;
+        left: 60%;
+        box-shadow: 0 0 12px var(--primary-blue);
+        animation: pulse 2s infinite reverse;
+      }
+
+      .analysis-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(42, 157, 143, 0.1) 0%,
+          transparent 50%
+        );
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Services Overview */
+      .services-overview {
+        padding: 5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--secondary-blue) 100%
+        );
+        color: white;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-category {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .service-category:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .category-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .category-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .service-category h3 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .category-link {
+        color: var(--accent-green);
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .category-link:hover {
+        color: white;
+      }
+
+      /* Detailed Services Sections */
+      .detailed-services {
+        padding: 5rem 2rem;
+        background: white;
+      }
+
+      .detailed-services.alt {
+        background: var(--gray-bg);
+      }
+
+      .service-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .service-header h2 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .service-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-point {
+        display: flex;
+        margin-bottom: 3rem;
+        align-items: flex-start;
+      }
+
+      .point-icon {
+        flex: 0 0 60px;
+        margin-right: 1.5rem;
+      }
+
+      .point-icon img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .point-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .point-content ul {
+        list-style: none;
+        margin-top: 1rem;
+      }
+
+      .point-content li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .point-content li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-green);
+        font-weight: bold;
+      }
+
+      .visual-container {
+        position: relative;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+      }
+
+      .service-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .visual-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(10, 74, 122, 0.9));
+        color: white;
+        padding: 2rem;
+      }
+
+      .visual-overlay h4 {
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .sector-list,
+      .tech-list,
+      .application-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .sector-item,
+      .tech-item,
+      .application-item {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Case Studies Section */
+      .case-studies {
+        padding: 5rem 2rem;
+        background: white;
+      }
+
+      .case-studies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .case-study {
+        background: var(--gray-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+      }
+
+      .case-study:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .case-image {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .case-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .case-study:hover .case-image img {
+        transform: scale(1.1);
+      }
+
+      .case-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 74, 122, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .case-study:hover .case-overlay {
+        opacity: 1;
+      }
+
+      .case-content {
+        padding: 2rem;
+      }
+
+      .case-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .case-desc {
+        margin-bottom: 1.5rem;
+        color: var(--dark-text);
+      }
+
+      .case-stats {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .case-stat {
+        text-align: center;
+      }
+
+      .stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-green);
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--dark-text);
+      }
+
+      .case-link {
+        color: var(--primary-blue);
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .case-link:hover {
+        color: var(--accent-green);
+      }
+
+      /* Process Section */
+      .process-section {
+        padding: 5rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--dark-green) 0%,
+          var(--accent-green) 100%
+        );
+        color: white;
+      }
+
+      .process-steps {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .process-step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .process-step:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(10px);
+      }
+
+      .step-number {
+        flex: 0 0 60px;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        margin-right: 2rem;
+      }
+
+      .step-content h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      /* CTA Section */
+      .service-cta {
+        padding: 5rem 2rem;
+        background: var(--primary-blue);
+        color: white;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+
+      .cta-content p {
+        margin-bottom: 2.5rem;
+        font-size: 1.2rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      /* Media Queries for Services page */
+      @media screen and (max-width: 968px) {
+        .services-hero {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .service-details {
+          grid-template-columns: 1fr;
+        }
+
+        .service-point {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .point-icon {
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
+
+        .process-step {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .step-number {
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .case-studies-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .case-stats {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      /* Hide About page sections when showing Services page */
+      .about-hero,
+      .mission-section,
+      .team-section,
+      .timeline-section,
+      .values-section {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation (consistent with other pages) -->
+    <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
         <div class="nav-logo">
@@ -48,6 +1412,24 @@
         </div>
       </div>
     </nav>
+
+    <!-- About Hero Section (Hidden when showing Services) -->
+    <section class="about-hero">
+      <div class="hero-content">
+        <h1 class="hero-title animate__animated animate__fadeInDown">
+          Pioneering Geospatial Excellence
+        </h1>
+        <p
+          class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          Transforming spatial data into actionable intelligence for sustainable
+          development since 2013
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="animated-globe" id="animatedGlobe"></div>
+      </div>
+    </section>
 
     <!-- Services Hero Section -->
     <section class="services-hero">
@@ -87,7 +1469,10 @@
             data-animation="animate__fadeInUp"
           >
             <div class="category-icon">
-              <img src="images/gis-mapping.svg" alt="GIS Mapping" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDVDNSAxMCA1IDIwIDUgMjBTMTAgMzUgMjAgMzVTMzUgMzAgMzUgMjBTMzUgNSAyMCA1WiIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTUgMjBIMzVNMTUgNUwyNSAzNU0zNSAyMEw1IDIwIiBzdHJva2U9IiMxYzZlYTUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4="
+                alt="GIS Mapping"
+              />
             </div>
             <h3>GIS Mapping & Analysis</h3>
             <p>
@@ -103,7 +1488,10 @@
             data-animation="animate__fadeInUp animate__delay-1s"
           >
             <div class="category-icon">
-              <img src="images/remote-sensing.svg" alt="Remote Sensing" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iOCIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIHN0cm9rZT0iIzFjNmVhNSIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0yNiAxMGEyMCAyMCAwIDAgMSA4IDhNMjYgMzBhMjAgMjAgMCAwIDAgOC04TTE0IDEwYTIwIDIwIDAgMCAwLTggOE0xNCAzMGEyMCAyMCAwIDAgMS04LTgiIHN0cm9rZT0iIzJhOWQ4ZiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg=="
+                alt="Remote Sensing"
+              />
             </div>
             <h3>Remote Sensing</h3>
             <p>
@@ -120,7 +1508,7 @@
           >
             <div class="category-icon">
               <img
-                src="images/environmental-data.svg"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMTB2MjBtMTAtMTB2MjBtMTAtMTB2MjBtMTAtMTB2MjBtMTAtMTB2MjAiIHN0cm9rZT0iIzFkNjg1MCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik01IDIwaDMwTTEwIDE1djEwTTIwIDE1djEwTTMwIDE1djEwIiBzdHJva2U9IiMyYTlkOGYiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4="
                 alt="Environmental Data"
               />
             </div>
@@ -154,7 +1542,10 @@
               data-animation="animate__fadeInRight"
             >
               <div class="point-icon">
-                <img src="images/gis-mapping.svg" alt="Custom Mapping" />
+                <img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMTB2MzBNMTAgNXY0ME0xNSA1djQwTTIwIDV2NDBNMjUgNXY0ME0zMCA1djQwTTM1IDV2NDBNNDAgNXY0ME00NSA1djQwTTUgMTBoNDBNNSA1aDQwTTUgMTVoNDBNNSAyMGg0ME01IDI1aDQwTTUgMzBoNDBNNSAzNWg0MCIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+"
+                  alt="Custom Mapping"
+                />
               </div>
               <div class="point-content">
                 <h3>Custom Map Production</h3>
@@ -175,7 +1566,10 @@
               data-animation="animate__fadeInRight"
             >
               <div class="point-icon">
-                <img src="images/spatial.svg" alt="Spatial Analysis" />
+                <img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM="
+                  alt="Spatial Analysis"
+                />
               </div>
               <div class="point-content">
                 <h3>Spatial Analysis & Modeling</h3>
@@ -195,7 +1589,10 @@
               data-animation="animate__fadeInRight"
             >
               <div class="point-icon">
-                <img src="images/data.svg" alt="Data Management" />
+                <img
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE1IiBoZWlnaHQ9IjEwIiB4PSI1IiB5PSI1IiByeD0iMiIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPHJlY3Qgd2lkdGg9IjE1IiBoZWlnaHQ9IjEwIiB4PSIzMCIgeT0iNSIgcng9IjIiIHN0cm9rZT0iIzFjNmVhNSIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxyZWN0IHdpZHRoPSIxNSIgaGVpZ2h0PSIxMCIgeD0iNSIgeT0iMjAiIHJ4PSIyIiBzdHJva2U9IiMxYzZlYTUiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB3aWR0aD0iMTUiIGhlaWdodD0iMTAiIHg9IjMwIiB5PSIyMCIgcng9IjIiIHN0cm9rZT0iIzJhOWQ4ZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxyZWN0IHdpZHRoPSIxNSIgaGVpZ2h0PSIxMCIgeD0iNSIgeT0iMzUiIHJ4PSIyIiBzdHJva2U9IiMyYTlkOGYiIHN0cm9rZS13aWR0aD0iMiIvPgo8cmVjdCB3aWR0aD0iMTUiIGhlaWdodD0iMTAiIHg9IjMwIiB5PSIzNSIgcng9IjIiIHN0cm9rZT0iIzFkNjg1MCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg=="
+                  alt="Data Management"
+                />
               </div>
               <div class="point-content">
                 <h3>Geospatial Data Management</h3>
@@ -230,335 +1627,6 @@
                   <div class="sector-item">Infrastructure Development</div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Remote Sensing Services Section -->
-    <section id="remote-sensing" class="detailed-services alt">
-      <div class="container">
-        <div class="service-header">
-          <h2>Remote Sensing & Imagery Analysis</h2>
-          <p>
-            Harnessing satellite and aerial imagery for environmental monitoring
-            and resource management
-          </p>
-        </div>
-        <div class="service-details">
-          <div class="service-visual">
-            <div
-              class="visual-container animate__animated"
-              data-animation="animate__fadeInRight"
-            >
-              <img
-                src="https://plus.unsplash.com/premium_photo-1688678097958-0620a452f0e8?q=80&w=508&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Remote Sensing"
-                class="service-image"
-              />
-              <div class="visual-overlay">
-                <h4>Remote Sensing Capabilities</h4>
-                <div class="tech-list">
-                  <div class="tech-item">Multispectral Analysis</div>
-                  <div class="tech-item">Change Detection</div>
-                  <div class="tech-item">Thermal Imaging</div>
-                  <div class="tech-item">LiDAR Processing</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="service-content">
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInLeft"
-            >
-              <div class="point-icon">
-                <img src="images/image-processing.svg" alt="Image Processing" />
-              </div>
-              <div class="point-content">
-                <h3>Image Processing & Analysis</h3>
-                <p>
-                  Advanced processing of satellite and aerial imagery to extract
-                  valuable information.
-                </p>
-                <ul>
-                  <li>Image enhancement and correction</li>
-                  <li>Feature extraction and classification</li>
-                  <li>Vegetation and land cover mapping</li>
-                </ul>
-              </div>
-            </div>
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInLeft"
-            >
-              <div class="point-icon">
-                <img src="images/change.svg" alt="Change Detection" />
-              </div>
-              <div class="point-content">
-                <h3>Change Detection & Monitoring</h3>
-                <p>
-                  Temporal analysis of imagery to identify and quantify
-                  environmental changes.
-                </p>
-                <ul>
-                  <li>Deforestation and land use change monitoring</li>
-                  <li>Urban expansion analysis</li>
-                  <li>Disaster impact assessment</li>
-                </ul>
-              </div>
-            </div>
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInLeft"
-            >
-              <div class="point-icon">
-                <img
-                  src="images/image-processing.svg"
-                  alt="Spectral Analysis"
-                />
-              </div>
-              <div class="point-content">
-                <h3>Spectral Analysis</h3>
-                <p>
-                  Utilizing spectral signatures for material identification and
-                  condition assessment.
-                </p>
-                <ul>
-                  <li>Mineral and resource exploration</li>
-                  <li>Crop health assessment</li>
-                  <li>Water quality monitoring</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Environmental Data Solutions Section -->
-    <section id="environmental-data" class="detailed-services">
-      <div class="container">
-        <div class="service-header">
-          <h2>Environmental Data Solutions</h2>
-          <p>
-            Comprehensive environmental monitoring and assessment through
-            advanced data analytics
-          </p>
-        </div>
-        <div class="service-details">
-          <div class="service-content">
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInRight"
-            >
-              <div class="point-icon">
-                <img
-                  src="images/environmental-assessment.svg"
-                  alt="Environmental Assessment"
-                />
-              </div>
-              <div class="point-content">
-                <h3>Environmental Impact Assessment</h3>
-                <p>
-                  Comprehensive assessment of potential environmental impacts of
-                  development projects.
-                </p>
-                <ul>
-                  <li>Baseline environmental data collection</li>
-                  <li>Impact prediction and evaluation</li>
-                  <li>Mitigation measure development</li>
-                </ul>
-              </div>
-            </div>
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInRight"
-            >
-              <div class="point-icon">
-                <img
-                  src="images/climate-resilience.svg"
-                  alt="Climate Resilience"
-                />
-              </div>
-              <div class="point-content">
-                <h3>Climate Resilience Planning</h3>
-                <p>
-                  Geospatial solutions for climate change adaptation and
-                  resilience building.
-                </p>
-                <ul>
-                  <li>Vulnerability and risk assessment</li>
-                  <li>Climate scenario modeling</li>
-                  <li>Adaptation planning support</li>
-                </ul>
-              </div>
-            </div>
-            <div
-              class="service-point animate__animated"
-              data-animation="animate__fadeInRight"
-            >
-              <div class="point-icon">
-                <img
-                  src="images/natural-resources.svg"
-                  alt="Natural Resources"
-                />
-              </div>
-              <div class="point-content">
-                <h3>Natural Resource Management</h3>
-                <p>
-                  Sustainable management of natural resources through geospatial
-                  technology.
-                </p>
-                <ul>
-                  <li>Forest resource monitoring</li>
-                  <li>Water resource assessment</li>
-                  <li>Biodiversity conservation planning</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="service-visual">
-            <div
-              class="visual-container animate__animated"
-              data-animation="animate__fadeInLeft"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=388&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Environmental Monitoring"
-                class="service-image"
-              />
-              <div class="visual-overlay">
-                <h4>Environmental Applications</h4>
-                <div class="application-list">
-                  <div class="application-item">EIA &amp; SEA</div>
-                  <div class="application-item">Carbon Accounting</div>
-                  <div class="application-item">Ecosystem Services</div>
-                  <div class="application-item">Sustainable Development</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section class="case-studies">
-      <div class="container">
-        <div class="section-header">
-          <h2>Project Case Studies</h2>
-          <p>
-            Real-world applications of our geospatial expertise across various
-            sectors
-          </p>
-        </div>
-        <div class="case-studies-grid">
-          <div
-            class="case-study animate__animated"
-            data-animation="animate__fadeInUp"
-          >
-            <div class="case-image">
-              <img
-                src="https://images.unsplash.com/photo-1505521501006-4c7fabcd65f2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Urban Planning Project"
-              />
-              <div class="case-overlay">
-                <h4>Accra Urban Expansion Analysis</h4>
-                <p>
-                  Geospatial analysis of urban growth patterns and
-                  infrastructure planning
-                </p>
-              </div>
-            </div>
-            <div class="case-content">
-              <h3>Urban Planning Support</h3>
-              <p class="case-desc">
-                Comprehensive analysis of urban expansion patterns in Greater
-                Accra Region to support sustainable city planning.
-              </p>
-              <div class="case-stats">
-                <div class="case-stat">
-                  <span class="stat-number">40%</span>
-                  <span class="stat-label"
-                    >Increase in Planning Efficiency</span
-                  >
-                </div>
-                <div class="case-stat">
-                  <span class="stat-number">15</span>
-                  <span class="stat-label">Communities Served</span>
-                </div>
-              </div>
-              <a href="#" class="case-link">View Full Case Study</a>
-            </div>
-          </div>
-          <div
-            class="case-study animate__animated"
-            data-animation="animate__fadeInUp animate__delay-1s"
-          >
-            <div class="case-image">
-              <img
-                src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Agricultural Project"
-              />
-              <div class="case-overlay">
-                <h4>Crop Health Monitoring System</h4>
-                <p>
-                  Satellite-based monitoring for Ghana's agricultural sector
-                </p>
-              </div>
-            </div>
-            <div class="case-content">
-              <h3>Agricultural Monitoring</h3>
-              <p class="case-desc">
-                Development of a satellite-based crop health monitoring system
-                for Ghana's cocoa production regions.
-              </p>
-              <div class="case-stats">
-                <div class="case-stat">
-                  <span class="stat-number">30%</span>
-                  <span class="stat-label">Yield Prediction Improvement</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-number">5K+</span>
-                  <span class="stat-label">Farmers Benefited</span>
-                </div>
-              </div>
-              <a href="#" class="case-link">View Full Case Study</a>
-            </div>
-          </div>
-          <div
-            class="case-study animate__animated"
-            data-animation="animate__fadeInUp animate__delay-2s"
-          >
-            <div class="case-image">
-              <img
-                src="https://plus.unsplash.com/premium_photo-1666666222364-7479e7347833?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Environmental Project"
-              />
-              <div class="case-overlay">
-                <h4>Forest Cover Change Assessment</h4>
-                <p>Monitoring deforestation patterns in protected areas</p>
-              </div>
-            </div>
-            <div class="case-content">
-              <h3>Environmental Conservation</h3>
-              <p class="case-desc">
-                Comprehensive assessment of forest cover changes in Ghana's
-                protected areas using multi-temporal satellite imagery.
-              </p>
-              <div class="case-stats">
-                <div class="case-stat">
-                  <span class="stat-number">95%</span>
-                  <span class="stat-label">Accuracy Achieved</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-number">12</span>
-                  <span class="stat-label">Protected Areas Monitored</span>
-                </div>
-              </div>
-              <a href="#" class="case-link">View Full Case Study</a>
             </div>
           </div>
         </div>
@@ -650,7 +1718,7 @@
       </div>
     </section>
 
-    <!-- Footer (consistent with other pages) -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
@@ -663,24 +1731,24 @@
         <div class="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#media">Media & Recognition</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media & Recognition</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">GIS Mapping</a></li>
-            <li><a href="#">Remote Sensing</a></li>
-            <li><a href="#">Environmental Data</a></li>
+            <li><a href="#gis-mapping">GIS Mapping</a></li>
+            <li><a href="#remote-sensing">Remote Sensing</a></li>
+            <li><a href="#environmental-data">Environmental Data</a></li>
             <li><a href="#">Geospatial Consulting</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Connect With Us</h4>
-          <div class="social-icon">
+          <div class="social-icons">
             <a href="#" class="social-icon" title="LinkedIn">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -695,7 +1763,7 @@
                 />
               </svg>
             </a>
-            <a href="#" class="social-icon">
+            <a href="#" class="social-icon" title="Facebook">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M20.9,2H3.1C2.5,2,2,2.5,2,3.1v17.8c0,0.6,0.5,1.1,1.1,1.1h9.6v-7.7h-2.6v-3h2.6V9.2c0-2.6,1.6-4,3.9-4c1.1,0,2.1,0.1,2.3,0.1v2.7l-1.6,0c-1.3,0-1.5,0.6-1.5,1.5v1.9h3l-0.4,3h-2.6V22h5.1c0.6,0,1.1-0.5,1.1-1.1V3.1C22,2.5,21.5,2,20.9,2z"
@@ -714,6 +1782,184 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/services-scripts.js"></script>
+    <script>
+      // Initialize animations when document is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation menu functionality
+        initNavigation();
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // Initialize interactive elements
+        initInteractiveElements();
+
+        // Initialize hero animation
+        initHeroAnimation();
+      });
+
+      // Navigation menu functionality - Fixed
+      function initNavigation() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+
+            // Prevent body scrolling when menu is open
+            if (navMenu.classList.contains("active")) {
+              document.body.style.overflow = "hidden";
+            } else {
+              document.body.style.overflow = "auto";
+            }
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+          });
+        });
+
+        // Change navbar style on scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
+            navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+          } else {
+            navbar.style.padding = "1rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          }
+        });
+      }
+
+      // Scroll animations using GSAP
+      function initScrollAnimations() {
+        // Animate elements when they come into view
+        const animatedElements = document.querySelectorAll(
+          ".service-card, .news-item, .stat, .badge, .service-category, .service-point, .visual-container, .case-study, .process-step"
+        );
+
+        // Use GSAP with ScrollTrigger for animations
+        animatedElements.forEach((element) => {
+          gsap.fromTo(
+            element,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        // Animate counting numbers
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-count");
+          gsap.to(counter, {
+            innerHTML: target,
+            duration: 2,
+            scrollTrigger: {
+              trigger: counter,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+            snap: { innerHTML: 1 },
+          });
+        });
+      }
+
+      // Initialize interactive elements
+      function initInteractiveElements() {
+        // Service card hover effects
+        const serviceCards = document.querySelectorAll(
+          ".service-card, .service-category"
+        );
+        serviceCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            gsap.to(this, { y: -10, duration: 0.3 });
+            gsap.to(this.querySelector(".service-icon, .category-icon"), {
+              scale: 1.1,
+              duration: 0.3,
+            });
+          });
+
+          card.addEventListener("mouseleave", function () {
+            gsap.to(this, { y: 0, duration: 0.3 });
+            gsap.to(this.querySelector(".service-icon, .category-icon"), {
+              scale: 1,
+              duration: 0.3,
+            });
+          });
+        });
+      }
+
+      // Hero section animation
+      function initHeroAnimation() {
+        // Animate the globe element
+        const globe = document.getElementById("animatedGlobe");
+        if (globe) {
+          // Create floating animation
+          gsap.to(globe, {
+            y: 20,
+            duration: 3,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+          });
+
+          // Add rotating effect
+          gsap.to(globe, {
+            rotationY: 360,
+            duration: 40,
+            repeat: -1,
+            ease: "none",
+          });
+        }
+
+        // Animate service visualization
+        const serviceAnimation = document.getElementById("serviceAnimation");
+        if (serviceAnimation) {
+          // Create data points animation
+          gsap.to("#dataPoints::before, #dataPoints::after", {
+            scale: 1.5,
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+            stagger: 0.5,
+            ease: "sine.inOut",
+          });
+        }
+
+        // Animate hero text
+        gsap.fromTo(
+          ".hero-title, .hero-subtitle",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
+        );
+
+        // Animate buttons
+        gsap.fromTo(
+          ".hero-buttons a, .cta-buttons a",
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, delay: 0.8 }
+        );
+      }
+    </script>
   </body>
 </html>

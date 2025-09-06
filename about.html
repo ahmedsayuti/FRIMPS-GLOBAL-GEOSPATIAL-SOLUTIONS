@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | FRIMPS Global Geospatial Solutions</title>
-    <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -13,9 +12,693 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Base styles and variables */
+      :root {
+        --primary-blue: #0a4a7a;
+        --secondary-blue: #1c6ea5;
+        --accent-green: #2a9d8f;
+        --dark-green: #1d5850;
+        --light-beige: #f4f1de;
+        --dark-text: #333333;
+        --light-text: #ffffff;
+        --gray-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        transform: translateY(-2px);
+      }
+
+      /* Navigation styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-green);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .contact-btn {
+        background-color: var(--accent-green);
+        color: white;
+        padding: 8px 20px;
+        border-radius: var(--border-radius);
+      }
+
+      .contact-btn:hover {
+        background-color: var(--dark-green);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-blue);
+        margin: 3px 0;
+        transition: var(--transition);
+        display: block;
+      }
+
+      /* Hero section styles */
+      .about-hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-blue);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        color: var(--dark-text);
+        max-width: 90%;
+      }
+
+      .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .animated-globe {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          var(--secondary-blue) 0%,
+          var(--primary-blue) 60%
+        );
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(42, 157, 143, 0.3);
+      }
+
+      .animated-globe::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("images/world-map.svg") no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+
+      /* Section common styles */
+      section {
+        padding: 5rem 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: var(--dark-text);
+      }
+
+      /* Mission Section */
+      .mission-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--secondary-blue) 100%
+        );
+        color: white;
+      }
+
+      .mission-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .mission-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+
+      .mission-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        display: block;
+        color: var(--accent-green);
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      /* Team Section */
+      .team-section {
+        background-color: var(--gray-bg);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .team-member {
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .member-image {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .member-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 74, 122, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .team-member:hover .member-overlay {
+        opacity: 1;
+      }
+
+      .team-member:hover .member-image img {
+        transform: scale(1.1);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        display: inline-block;
+        padding: 0.8rem;
+        background: white;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        transform: translateY(-5px);
+        background: var(--accent-green);
+      }
+
+      .social-links img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .member-info {
+        padding: 2rem;
+      }
+
+      .member-info h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .position {
+        color: var(--accent-green);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .bio {
+        color: var(--dark-text);
+        line-height: 1.6;
+      }
+
+      /* Timeline Section */
+      .timeline-section {
+        background: white;
+      }
+
+      .timeline {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: var(--accent-green);
+      }
+
+      .timeline-item {
+        display: flex;
+        margin-bottom: 4rem;
+        position: relative;
+        width: 100%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      .timeline-year {
+        flex: 1;
+        padding: 0 2rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .timeline-content {
+        flex: 1;
+        padding: 2rem;
+        background: var(--gray-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .timeline-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Values Section */
+      .values-section {
+        background: linear-gradient(
+          135deg,
+          var(--dark-green) 0%,
+          var(--accent-green) 100%
+        );
+        color: white;
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .value-item {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+        backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .value-item:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .value-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .value-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .value-item h3 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        padding: 4rem 2rem 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: var(--light-text);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-section ul li a {
+        transition: var(--transition);
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--accent-green);
+        padding-left: 5px;
+      }
+
+      /* Social Icons - Fixed styling */
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+
+      .social-icon:hover {
+        background-color: var(--accent-green);
+        transform: translateY(-3px);
+      }
+
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Responsive design */
+      @media screen and (max-width: 968px) {
+        .about-hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 8rem;
+        }
+
+        .hero-subtitle {
+          max-width: 100%;
+        }
+
+        .mission-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .mission-stats {
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .timeline::before {
+          left: 30px;
+        }
+
+        .timeline-item {
+          flex-direction: row !important;
+        }
+
+        .timeline-year {
+          flex: 0 0 100px;
+          justify-content: flex-start;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: white;
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          padding: 2rem 0;
+          gap: 0;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 1.5rem 0;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .animated-globe {
+          width: 300px;
+          height: 300px;
+        }
+
+        .mission-stats {
+          flex-direction: column;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation (consistent with homepage) -->
+    <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
         <div class="nav-logo">
@@ -129,19 +812,25 @@
           >
             <div class="member-image">
               <img
-                src="images/team/bernard-frimpong.jpg"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2VlZWVlZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTk5OTkiPkRyLiBCZXJuYXJkIEZvc3UgRnJpbXBvbmc8L3RleHQ+PC9zdmc+"
                 alt="Dr. Bernard Fosu Frimpong"
               />
               <div class="member-overlay">
                 <div class="social-links">
                   <a href="#"
-                    ><img src="images/icons/linkedin-icon.svg" alt="LinkedIn"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYuOCA1LjJINy4yYy0xLjEgMC0yIC45LTIgMnY5LjZjMCAxLjEuOSAyIDIgMmg5LjZjMS4xIDAgMi0uOSAyLTJWNy4yYzAtMS4xLS45LTItMi0yem0tNS44IDkuOGMtMS43IDAtMy0xLjMtMy0zczEuMy0zIDMtMyAzIDEuMyAzIDMtMS4zIDMtMyAzem0zLTEwYTMgMyAwIDAgMS0zIDMgMyAzIDAgMCAxLTMtM2gzYzAgLjYgMCAxIDAgMXoiIGZpbGw9IiMwYTZhN2EiLz48L3N2Zz4="
+                      alt="LinkedIn"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/twitter-icon.svg" alt="Twitter"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTggMmw0IDRNNiAybDQgNE0xMCAybDQgNE0xNCAybDQgNE0yIDZsNCA0TTEwIDZsNCA0TTE0IDZsNCA0TTE4IDZsNCA0TTIgMTBsNCA0TTYgMTBsNCA0TTE0IDEwbDQgNE0xOCAxMGw0IDRNMiAxNGw0IDRNNiAxNGw0IDRNMTAgMTRsNCA0TTE4IDE0bDQgNE0yIDE4bDQgNE02IDE4bDQgNE0xMCAxOGw0IDRNMTQgMThsNCA0TTE4IDE4bDQgNCIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="
+                      alt="Twitter"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/email-icon.svg" alt="Email"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMTJNNyAySDVjLTEuMSAwLTIgLjktMiAydjE0YzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJ2LTJNNyAyVjJNNyA2VjZNNyAxMFYxME03IDE0VjE0TTE3IDJIN20xMCA0SDdtMTAgNEg3bTEwIDRINyIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="
+                      alt="Email"
                   /></a>
                 </div>
               </div>
@@ -162,17 +851,26 @@
             data-animation="animate__fadeInUp"
           >
             <div class="member-image">
-              <img src="images/team/akua-manu.jpg" alt="Akua Manu" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2VlZWVlZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTk5OTkiPkFLVUEgTUFOVTwvdGV4dD48L3N2Zz4="
+                alt="Akua Manu"
+              />
               <div class="member-overlay">
                 <div class="social-links">
                   <a href="#"
-                    ><img src="images/icons/linkedin-icon.svg" alt="LinkedIn"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYuOCA1LjJINy4yYy0xLjEgMC0yIC45LTIgMnY5LjZjMCAxLjEuOSAyIDIgMmg5LjZjMS4xIDAgMi0uOSAyLTJWNy4yYzAtMS4xLS45LTItMi0yem0tNS44IDkuOGMtMS43IDAtMy0xLjMtMy0zczEuMy0zIDMtMyAzIDEuMyAzIDMtMS4zIDMtMyAzem0zLTEwYTMgMyAwIDAgMS0zIDMgMyAzIDAgMCAxLTMtM2gzYzAgLjYgMCAxIDAgMXoiIGZpbGw9IiMwYTZhN2EiLz48L3N2Zz4="
+                      alt="LinkedIn"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/twitter-icon.svg" alt="Twitter"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTggMmw0IDRNNiAybDQgNE0xMCAybDQgNE0xNCAybDQgNE0yIDZsNCA0TTEwIDZsNCA0TTE0IDZsNCA0TTE4IDZsNCA0TTIgMTBsNCA0TTYgMTBsNCA0TTE0IDEwbDQgNE0xOCAxMGw0IDRNMiAxNGw0IDRNNiAxNGw0IDRNMTAgMTRsNCA0TTE4IDE0bDQgNE0yIDE4bDQgNE02IDE4bDQgNE0xMCAxOGw0IDRNMTQgMThsNCA0TTE4IDE4bDQgNCIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="
+                      alt="Twitter"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/email-icon.svg" alt="Email"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMTJNNyAySDVjLTEuMSAwLTIgLjktMiAydjE0YzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJ2LTJNNyAyVjJNNyA2VjZNNyAxMFYxME03IDE0VjE0TTE3IDJIN20xMCA0SDdtMTAgNEg3bTEwIDRINyIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="
+                      alt="Email"
                   /></a>
                 </div>
               </div>
@@ -192,17 +890,26 @@
             data-animation="animate__fadeInRight"
           >
             <div class="member-image">
-              <img src="images/team/kwame-ansah.jpg" alt="Kwame Ansah" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2VlZWVlZSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTk5OTkiPktXQU1FIEFOU0FIPC90ZXh0Pjwvc3ZnPg=="
+                alt="Kwame Ansah"
+              />
               <div class="member-overlay">
                 <div class="social-links">
                   <a href="#"
-                    ><img src="images/icons/linkedin-icon.svg" alt="LinkedIn"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYuOCA1LjJINy4yYy0xLjEgMC0yIC45LTIgMnY5LjZjMCAxLjEuOSAyIDIgMmg5LjZjMS4xIDAgMi0uOSAyLTJWNy4yYzAtMS4极LS45LTItMi0yem0tNS44IDkuOGMtMS43IDAtMy0xLjMtMy0zczEuMy0zIDMtMyAzIDEuMyAzIDMtMS4zIDMtMyAzem0zLTEwYTMgMyAwIDAgMS0zIDMgMyAzIDAgMCAxLTMtM2gzYzAgLjYgMCAxIDAgMXoiIGZpbGw9IiMwYTZhN2EiLz48L3N2Zz4="
+                      alt="LinkedIn"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/twitter-icon.svg" alt="Twitter"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTggMmw0IDRNNiAybDQgNE0xMCAybDQgNE0xNCAybDQgNE0yIDZsNCA0TTEwIDZsNCA0TTE0IDZsNCA0TTE4IDZsNCA0TTIgMTBsNCA0TTYgMTBsNCA0TTE0IDEwbDQgNE0xOCAxMGw0IDRNMiAxNGw0IDRNNiAxNGw0IDRNMTAgMTRsNCA0TTE4IDE0bDQgNE0yIDE4bDQgNE02IDE4bDQgNE0xMCAxOGw0IDRNMTQgMThsNCA0TTE4IDE4bDQgNCIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg="
+                      alt="Twitter"
                   /></a>
                   <a href="#"
-                    ><img src="images/icons/email-icon.svg" alt="Email"
+                    ><img
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMTJNNyAySDVjLTEuMSAwLTIgLjktMiAydjE0YzAgMS4xLjkgMiAyIDJoMTRjMS4xIDAgMi0uOSAyLTJ2LTJNNyAyVjJNNyA2VjZNNyAxMFYxME03IDE0VjE0TTE3IDJIN20xMCA0SDdtMTAgNEg3bTEwIDRINyIgc3Ryb2tlPSIjMGE2YTdhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="
+                      alt="Email"
                   /></a>
                 </div>
               </div>
@@ -312,7 +1019,10 @@
             data-animation="animate__fadeInUp"
           >
             <div class="value-icon">
-              <img src="images/icons/innovation-icon.svg" alt="Innovation" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDVjLTguMyAwLTE1IDYuNy0xNSAxNXM2LjcgMTUgMTUgMTUgMTUtNi43IDE1LTE1UzI4LjMgNSAyMCA1eiIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTE1IDE1bDUgNSAxMC0xMCIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+"
+                alt="Innovation"
+              />
             </div>
             <h3>Innovation</h3>
             <p>
@@ -326,7 +1036,7 @@
           >
             <div class="value-icon">
               <img
-                src="images/icons/sustainability-icon.svg"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMTBoMzBtLTMwIDEwaDMwbS0zMCAxMGgzMCIgc3Ryb2tlPSIjMGE0YTdhIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTEwIDV2MzBNMjAgNXYzME0zMCA1djMwIiBzdHJva2U9IiMxYzZlYTUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4="
                 alt="Sustainability"
               />
             </div>
@@ -341,7 +1051,10 @@
             data-animation="animate__fadeInUp animate__delay-2s"
           >
             <div class="value-icon">
-              <img src="images/icons/accuracy-icon.svg" alt="Accuracy" />
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMTVoMTBtMTAgMGgxMG0xMCAwaDEwTTUgMjVoMTBtMTAgMGgxMG0xMCAwaDEwTTUgMzVoMTBtMTAgMGgxMG0xMCAwaDEwIiBzdHJva2U9IiMyYTlkOGYiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4="
+                alt="Accuracy"
+              />
             </div>
             <h3>Accuracy</h3>
             <p>
@@ -353,7 +1066,7 @@
       </div>
     </section>
 
-    <!-- Footer (consistent with homepage) -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
@@ -366,24 +1079,26 @@
         <div class="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#media">Media & Recognition</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media & Recognition</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">GIS Mapping</a></li>
-            <li><a href="#">Remote Sensing</a></li>
-            <li><a href="#">Environmental Data</a></li>
-            <li><a href="#">Geospatial Consulting</a></li>
+            <li><a href="services.html#gis-mapping">GIS Mapping</a></li>
+            <li><a href="services.html#remote-sensing">Remote Sensing</a></li>
+            <li>
+              <a href="services.html#environmental-data">Environmental Data</a>
+            </li>
+            <li><a href="services.html">Geospatial Consulting</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Connect With Us</h4>
-          <div class="social-icon">
+          <div class="social-icons">
             <a href="#" class="social-icon" title="LinkedIn">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -398,7 +1113,7 @@
                 />
               </svg>
             </a>
-            <a href="#" class="social-icon">
+            <a href="#" class="social-icon" title="Facebook">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M20.9,2H3.1C2.5,2,2,2.5,2,3.1v17.8c0,0.6,0.5,1.1,1.1,1.1h9.6v-7.7h-2.6v-3h2.6V9.2c0-2.6,1.6-4,3.9-4c1.1,0,2.1,0.1,2.3,0.1v2.7l-1.6,0c-1.3,0-1.5,0.6-1.5,1.5v1.9h3l-0.4,3h-2.6V22h5.1c0.6,0,1.1-0.5,1.1-1.1V3.1C22,2.5,21.5,2,20.9,2z"
@@ -417,6 +1132,153 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script>
+      // Initialize animations when document is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation menu functionality
+        initNavigation();
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // Initialize interactive elements
+        initInteractiveElements();
+
+        // Initialize hero animation
+        initHeroAnimation();
+      });
+
+      // Navigation menu functionality - Fixed
+      function initNavigation() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+
+            // Prevent body scrolling when menu is open
+            if (navMenu.classList.contains("active")) {
+              document.body.style.overflow = "hidden";
+            } else {
+              document.body.style.overflow = "auto";
+            }
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+          });
+        });
+
+        // Change navbar style on scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
+            navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+          } else {
+            navbar.style.padding = "1rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          }
+        });
+      }
+
+      // Scroll animations using GSAP
+      function initScrollAnimations() {
+        // Animate elements when they come into view
+        const animatedElements = document.querySelectorAll(
+          ".stat-box, .team-member, .timeline-item, .value-item"
+        );
+
+        // Use GSAP with ScrollTrigger for animations
+        animatedElements.forEach((element) => {
+          gsap.fromTo(
+            element,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        // Animate counting numbers
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-count");
+          gsap.to(counter, {
+            innerHTML: target,
+            duration: 2,
+            scrollTrigger: {
+              trigger: counter,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+            snap: { innerHTML: 1 },
+          });
+        });
+      }
+
+      // Initialize interactive elements
+      function initInteractiveElements() {
+        // Team member hover effects
+        const teamMembers = document.querySelectorAll(".team-member");
+        teamMembers.forEach((member) => {
+          member.addEventListener("mouseenter", function () {
+            gsap.to(this, { y: -10, duration: 0.3 });
+          });
+
+          member.addEventListener("mouseleave", function () {
+            gsap.to(this, { y: 0, duration: 0.3 });
+          });
+        });
+      }
+
+      // Hero section animation
+      function initHeroAnimation() {
+        // Animate the globe element
+        const globe = document.getElementById("animatedGlobe");
+        if (globe) {
+          // Create floating animation
+          gsap.to(globe, {
+            y: 20,
+            duration: 3,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+          });
+
+          // Add rotating effect
+          gsap.to(globe, {
+            rotationY: 360,
+            duration: 40,
+            repeat: -1,
+            ease: "none",
+          });
+        }
+
+        // Animate hero text
+        gsap.fromTo(
+          ".hero-title, .hero-subtitle",
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
+        );
+      }
+    </script>
   </body>
 </html>

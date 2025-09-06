@@ -6,12 +6,644 @@
     <title>
       FRIMPS Global Geospatial Solutions (FGGS) | Geospatial Technology Experts
     </title>
-    <link rel="stylesheet" href="css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+      /* Base styles and variables */
+      :root {
+        --primary-blue: #0a4a7a;
+        --secondary-blue: #1c6ea5;
+        --accent-green: #2a9d8f;
+        --dark-green: #1d5850;
+        --light-beige: #f4f1de;
+        --dark-text: #333333;
+        --light-text: #ffffff;
+        --gray-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        transform: translateY(-2px);
+      }
+
+      /* Navigation styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-green);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .contact-btn {
+        background-color: var(--accent-green);
+        color: white;
+        padding: 8px 20px;
+        border-radius: var(--border-radius);
+      }
+
+      .contact-btn:hover {
+        background-color: var(--dark-green);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-blue);
+        margin: 3px 0;
+        transition: var(--transition);
+        display: block;
+      }
+
+      /* Hero section styles */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 2rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-blue);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        color: var(--dark-text);
+        max-width: 90%;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .animated-globe {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          var(--secondary-blue) 0%,
+          var(--primary-blue) 60%
+        );
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 50px rgba(42, 157, 143, 0.3);
+      }
+
+      .animated-globe::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("images/world-map.svg") no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+
+      /* Section common styles */
+      section {
+        padding: 7rem 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: var(--dark-text);
+      }
+
+      /* Services section */
+      .services {
+        background-color: var(--gray-bg);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background-color: rgba(42, 157, 143, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .service-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .service-card h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .service-link {
+        color: var(--accent-green);
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .service-link:hover {
+        color: var(--dark-green);
+      }
+
+      /* About section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        color: var(--primary-blue);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--dark-text);
+      }
+
+      .about-image {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-img {
+        width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(10, 74, 122, 0.7),
+          rgba(42, 157, 143, 0.7)
+        );
+        border-radius: var(--border-radius);
+        opacity: 0.3;
+      }
+
+      /* Media section */
+      .media-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .news-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .news-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .news-date {
+        color: var(--accent-green);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .badges {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        text-align: center;
+      }
+
+      .badge img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Contact section */
+      .contact {
+        background-color: var(--gray-bg);
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-family: "Open Sans", sans-serif;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-green);
+        box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        padding: 4rem 2rem 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: var(--light-text);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-section ul li a {
+        transition: var(--transition);
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--accent-green);
+        padding-left: 5px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Responsive design */
+      @media screen and (max-width: 968px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 8rem;
+        }
+
+        .hero-subtitle {
+          max-width: 100%;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-stats {
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: white;
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          padding: 2rem 0;
+          gap: 0;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 1.5rem 0;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .animated-globe {
+          width: 300px;
+          height: 300px;
+        }
+
+        .media-content {
+          grid-template-columns: 1fr;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #2a9d8f;
+        transition: all 0.3s ease;
+        margin: 0 10px;
+      }
+
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation Section -->
@@ -232,7 +864,7 @@
           </div>
           <div class="contact-item">
             <img src="images/phone-icon.svg" alt="Phone" />
-            <p>+233 24 123 4567</p>
+            <p>+233 24 562 6598</p>
           </div>
           <div class="contact-item">
             <img src="images/email-icon.svg" alt="Email" />
@@ -318,6 +950,259 @@
       </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+      // Initialize animations when document is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation menu functionality
+        initNavigation();
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // Initialize interactive elements
+        initInteractiveElements();
+
+        // Initialize hero animation
+        initHeroAnimation();
+      });
+
+      // Navigation menu functionality
+      function initNavigation() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+
+            // Prevent body scrolling when menu is open
+            if (navMenu.classList.contains("active")) {
+              document.body.style.overflow = "hidden";
+            } else {
+              document.body.style.overflow = "auto";
+            }
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            if (hamburger) hamburger.classList.remove("active");
+            if (navMenu) navMenu.classList.remove("active");
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+          });
+        });
+
+        // Change navbar style on scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
+            navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+          } else {
+            navbar.style.padding = "1rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          }
+        });
+      }
+
+      // Scroll animations using Anime.js
+      function initScrollAnimations() {
+        // Animate elements when they come into view
+        const animatedElements = document.querySelectorAll(
+          ".service-card, .news-item, .stat, .badge"
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Use Anime.js for smooth entrance animations
+                anime({
+                  targets: entry.target,
+                  translateY: [50, 0],
+                  opacity: [0, 1],
+                  duration: 1000,
+                  easing: "easeOutCubic",
+                });
+
+                // If it's a stat element, animate the counting
+                if (entry.target.classList.contains("stat")) {
+                  animateValue(entry.target.querySelector(".stat-number"));
+                }
+
+                // Stop observing after animation
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        // Observe all animated elements
+        animatedElements.forEach((element) => {
+          observer.observe(element);
+        });
+      }
+
+      // Animate counting numbers
+      function animateValue(element) {
+        const finalValue = parseInt(element.getAttribute("data-count"));
+        const duration = 2000; // Duration in ms
+        const interval = 20; // Update every 20ms
+        const steps = duration / interval;
+        const increment = finalValue / steps;
+        let currentValue = 0;
+
+        const timer = setInterval(function () {
+          currentValue += increment;
+          if (currentValue >= finalValue) {
+            clearInterval(timer);
+            currentValue = finalValue;
+          }
+          element.textContent = Math.round(currentValue);
+        }, interval);
+      }
+
+      // Initialize interactive elements
+      function initInteractiveElements() {
+        // Service card hover effects
+        const serviceCards = document.querySelectorAll(".service-card");
+        serviceCards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            anime({
+              targets: this.querySelector(".service-icon"),
+              scale: 1.1,
+              duration: 300,
+              easing: "easeInOutQuad",
+            });
+          });
+
+          card.addEventListener("mouseleave", function () {
+            anime({
+              targets: this.querySelector(".service-icon"),
+              scale: 1,
+              duration: 300,
+              easing: "easeInOutQuad",
+            });
+          });
+        });
+
+        // Form submission handling
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Simple form validation
+            const formData = new FormData(contactForm);
+            let isValid = true;
+
+            contactForm.querySelectorAll("[required]").forEach((field) => {
+              if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = "red";
+              } else {
+                field.style.borderColor = "#ddd";
+              }
+            });
+
+            if (isValid) {
+              // Simulate form submission success
+              anime({
+                targets: contactForm,
+                opacity: 0,
+                duration: 500,
+                complete: function () {
+                  contactForm.innerHTML =
+                    '<p class="success-message">Thank you for your message! We will get back to you soon.</p>';
+                  anime({
+                    targets: contactForm.querySelector(".success-message"),
+                    opacity: [0, 1],
+                    duration: 500,
+                  });
+                },
+              });
+            }
+          });
+        }
+      }
+
+      // Hero section animation
+      function initHeroAnimation() {
+        // Animate the globe element
+        const globe = document.getElementById("animatedGlobe");
+
+        if (globe) {
+          // Create floating animation
+          anime({
+            targets: globe,
+            translateY: [-20, 20],
+            duration: 3000,
+            direction: "alternate",
+            loop: true,
+            easing: "easeInOutSine",
+          });
+
+          // Add rotating effect
+          anime({
+            targets: globe,
+            rotate: 360,
+            duration: 40000,
+            loop: true,
+            easing: "linear",
+          });
+
+          // Add pulsing effect
+          anime({
+            targets: globe,
+            scale: [1, 1.05],
+            duration: 2000,
+            direction: "alternate",
+            loop: true,
+            easing: "easeInOutSine",
+          });
+        }
+
+        // Animate hero text
+        anime({
+          targets: ".hero-title, .hero-subtitle",
+          translateY: [50, 0],
+          opacity: [0, 1],
+          duration: 1200,
+          delay: anime.stagger(200),
+          easing: "easeOutCubic",
+        });
+
+        // Animate buttons
+        anime({
+          targets: ".hero-buttons a",
+          translateY: [30, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          delay: 800,
+          easing: "easeOutCubic",
+        });
+      }
+
+      // Additional utility function for scroll-triggered animations
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+    </script>
   </body>
 </html>

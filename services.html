@@ -228,194 +228,65 @@
         z-index: 1;
       }
 
-      /* Enhanced geospatial visualization */
-      .geospatial-visualization {
+      /* Replace the existing #chartdiv styles with these updated ones */
+      #chartdiv {
         width: 500px;
         height: 500px;
-        position: relative;
         border-radius: 50%;
-        overflow: hidden;
         box-shadow: 0 20px 40px rgba(10, 74, 122, 0.2);
-        transform-style: preserve-3d;
-        perspective: 1000px;
+        overflow: hidden;
+        background: radial-gradient(circle at center, #1c6ea5 0%, #0a4a7a 70%);
+        position: relative;
       }
 
-      .globe-base {
+      /* Make the amChart container fill the entire #chartdiv */
+      #chartdiv > div {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* Adjust the glow effect */
+      #chartdiv::before {
+        content: "";
         position: absolute;
-        width: 100%;
-        height: 100%;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
         border-radius: 50%;
-        background: radial-gradient(
-          circle at 30% 30%,
-          var(--secondary-blue) 0%,
-          var(--primary-blue) 60%
-        );
-        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+        background: transparent;
+        box-shadow: 0 0 30px rgba(42, 157, 143, 0.4);
+        z-index: -1;
       }
 
-      .globe-continents {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url("images/world-map.svg");
-        background-size: cover;
-        opacity: 0.3;
-        animation: rotateGlobe 60s infinite linear;
+      /* Update responsive styles */
+      @media screen and (max-width: 968px) {
+        #chartdiv {
+          width: 350px;
+          height: 350px;
+          margin-top: 2rem;
+        }
       }
 
-      .data-points {
-        position: absolute;
-        width: 100%;
-        height: 100%;
+      @media screen and (max-width: 768px) {
+        #chartdiv {
+          width: 300px;
+          height: 300px;
+        }
       }
 
-      .data-point {
+      /* Adding a subtle glow effect around the globe */
+      #chartdiv::before {
+        content: "";
         position: absolute;
-        width: 12px;
-        height: 12px;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
         border-radius: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      .data-point-1 {
-        top: 30%;
-        left: 40%;
-        background-color: var(--accent-green);
-        box-shadow: 0 0 20px var(--accent-green);
-        animation: pulse 2s infinite;
-      }
-
-      .data-point-2 {
-        top: 60%;
-        left: 55%;
-        background-color: var(--primary-blue);
-        box-shadow: 0 0 20px var(--primary-blue);
-        animation: pulse 2s infinite reverse;
-      }
-
-      .data-point-3 {
-        top: 45%;
-        left: 30%;
-        background-color: var(--dark-green);
-        box-shadow: 0 0 20px var(--dark-green);
-        animation: pulse 2s infinite 0.5s;
-      }
-
-      .data-connection {
-        position: absolute;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--accent-green),
-          transparent
-        );
-        transform-origin: 0 0;
-      }
-
-      .connection-1 {
-        top: 30%;
-        left: 40%;
-        width: 100px;
-        transform: rotate(45deg);
-        animation: glow 3s infinite;
-      }
-
-      .connection-2 {
-        top: 60%;
-        left: 55%;
-        width: 120px;
-        transform: rotate(-20deg);
-        animation: glow 3s infinite 1s;
-      }
-
-      .connection-3 {
-        top: 45%;
-        left: 30%;
-        width: 80px;
-        transform: rotate(10deg);
-        animation: glow 3s infinite 2s;
-      }
-
-      .satellite {
-        position: absolute;
-        width: 20px;
-        height: 10px;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 10px white;
-        animation: orbitSatellite 15s infinite linear;
-      }
-
-      .pulse-ring {
-        position: absolute;
-        top: 30%;
-        left: 40%;
-        width: 30px;
-        height: 30px;
-        border: 2px solid var(--accent-green);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        animation: pulseRing 3s infinite;
-      }
-
-      @keyframes rotateGlobe {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: translate(-50%, -50%) scale(1.5);
-          opacity: 0.7;
-        }
-        100% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 1;
-        }
-      }
-
-      @keyframes pulseRing {
-        0% {
-          width: 10px;
-          height: 10px;
-          opacity: 1;
-        }
-        100% {
-          width: 100px;
-          height: 100px;
-          opacity: 0;
-        }
-      }
-
-      @keyframes orbitSatellite {
-        0% {
-          transform: rotate(0deg) translateX(180px) rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg) translateX(180px) rotate(-360deg);
-        }
-      }
-
-      @keyframes glow {
-        0% {
-          opacity: 0.3;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0.3;
-        }
+        background: transparent;
+        box-shadow: 0 0 30px rgba(42, 157, 143, 0.4);
+        z-index: -1;
       }
 
       /* Section common styles */
@@ -478,9 +349,9 @@
         align-items: center;
       }
 
-      .service-icon img {
-        width: 40px;
-        height: 40px;
+      .service-icon i {
+        font-size: 40px;
+        color: var(--primary-blue);
       }
 
       .service-card h3 {
@@ -587,6 +458,7 @@
       .visual-overlay h4 {
         margin-bottom: 1rem;
         color: white;
+        font-size: 1.2rem;
       }
 
       .sector-list {
@@ -804,7 +676,7 @@
           justify-content: center;
         }
 
-        .geospatial-visualization {
+        #chartdiv {
           width: 350px;
           height: 350px;
           margin-top: 2rem;
@@ -846,7 +718,7 @@
           font-size: 2.5rem;
         }
 
-        .geospatial-visualization {
+        #chartdiv {
           width: 300px;
           height: 300px;
         }
@@ -875,6 +747,12 @@
         }
       }
     </style>
+
+    <!-- Resources for the globe -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -928,20 +806,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="geospatial-visualization">
-          <div class="globe-base"></div>
-          <div class="globe-continents"></div>
-          <div class="data-points">
-            <div class="data-point data-point-1"></div>
-            <div class="data-point data-point-2"></div>
-            <div class="data-point data-point-3"></div>
-            <div class="data-connection connection-1"></div>
-            <div class="data-connection connection-2"></div>
-            <div class="data-connection connection-3"></div>
-            <div class="pulse-ring"></div>
-          </div>
-          <div class="satellite"></div>
-        </div>
+        <div id="chartdiv"></div>
       </div>
     </section>
 
@@ -1292,22 +1157,102 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
+      // Initialize the rotating globe
+      am4core.ready(function () {
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create map instance
+        var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+        // Set map definition
+        chart.geodata = am4geodata_worldLow;
+
+        // Set projection
+        chart.projection = new am4maps.projections.Orthographic();
+        chart.panBehavior = "rotateLongLat";
+        chart.deltaLatitude = -20;
+        chart.padding(20, 20, 20, 20);
+
+        // limits vertical rotation
+        chart.adapter.add("deltaLatitude", function (delatLatitude) {
+          return am4core.math.fitToRange(delatLatitude, -90, 90);
+        });
+
+        // Create map polygon series
+        var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+        // Make map load polygon (like country names) data from GeoJSON
+        polygonSeries.useGeodata = true;
+
+        // Configure series
+        var polygonTemplate = polygonSeries.mapPolygons.template;
+        polygonTemplate.tooltipText = "{name}";
+        polygonTemplate.fill = am4core.color("#47c78a");
+        polygonTemplate.stroke = am4core.color("#0a4a7a");
+        polygonTemplate.strokeWidth = 0.5;
+
+        // Add graticules
+        var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
+        graticuleSeries.mapLines.template.line.stroke =
+          am4core.color("#ffffff");
+        graticuleSeries.mapLines.template.line.strokeOpacity = 0.08;
+        graticuleSeries.fitExtent = false;
+
+        // Configure background - UPDATED FOR BETTER VISIBILITY
+        chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 0.1;
+        chart.backgroundSeries.mapPolygons.template.polygon.fill =
+          am4core.color("transparent"); // Changed to transparent
+
+        // Create hover state and set alternative fill color
+        var hs = polygonTemplate.states.create("hover");
+        hs.properties.fill = am4core.color("#2a9d8f");
+
+        // Set up automatic rotation
+        let animation;
+        setTimeout(function () {
+          animation = chart.animate(
+            { property: "deltaLongitude", to: 100000 },
+            20000000
+          );
+        }, 3000);
+
+        // Stop rotation on user interaction
+        chart.seriesContainer.events.on("down", function () {
+          if (animation) {
+            animation.stop();
+          }
+        });
+      });
+
+      // Initialize animations when document is loaded
       document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation menu functionality
         initNavigation();
+
+        // Initialize scroll animations
         initScrollAnimations();
+
+        // Initialize interactive elements
         initInteractiveElements();
+
+        // Initialize hero animation
         initHeroAnimation();
       });
 
+      // Navigation menu functionality
       function initNavigation() {
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
 
+        // Toggle mobile menu
         if (hamburger) {
           hamburger.addEventListener("click", function () {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
 
+            // Prevent body scrolling when menu is open
             if (navMenu.classList.contains("active")) {
               document.body.style.overflow = "hidden";
             } else {
@@ -1316,14 +1261,16 @@
           });
         }
 
+        // Close mobile menu when clicking on a link
         document.querySelectorAll(".nav-link").forEach((link) => {
           link.addEventListener("click", function () {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
           });
         });
 
+        // Change navbar style on scroll
         window.addEventListener("scroll", function () {
           const navbar = document.querySelector(".navbar");
           if (window.scrollY > 50) {
@@ -1338,11 +1285,14 @@
         });
       }
 
+      // Scroll animations using GSAP
       function initScrollAnimations() {
+        // Animate elements when they come into view
         const animatedElements = document.querySelectorAll(
           ".service-card, .process-step, .service-point, .visual-container, .content-card"
         );
 
+        // Use GSAP with ScrollTrigger for animations
         animatedElements.forEach((element) => {
           gsap.fromTo(
             element,
@@ -1361,44 +1311,46 @@
         });
       }
 
+      // Initialize interactive elements
       function initInteractiveElements() {
+        // Service card hover effects
         const serviceCards = document.querySelectorAll(
           ".service-card, .content-card"
         );
         serviceCards.forEach((card) => {
           card.addEventListener("mouseenter", function () {
             gsap.to(this, { y: -10, duration: 0.3 });
+            gsap.to(this.querySelector(".service-icon"), {
+              scale: 1.1,
+              duration: 0.3,
+            });
           });
 
           card.addEventListener("mouseleave", function () {
             gsap.to(this, { y: 0, duration: 0.3 });
+            gsap.to(this.querySelector(".service-icon"), {
+              scale: 1,
+              duration: 0.3,
+            });
           });
         });
       }
 
+      // Hero section animation
       function initHeroAnimation() {
+        // Animate hero text
         gsap.fromTo(
           ".hero-title, .hero-subtitle",
           { y: 50, opacity: 0 },
           { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
         );
 
+        // Animate buttons
         gsap.fromTo(
           ".hero-buttons a",
           { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 1, delay: 0.8 }
         );
-
-        const visualization = document.querySelector(
-          ".geospatial-visualization"
-        );
-        if (visualization) {
-          gsap.fromTo(
-            visualization,
-            { scale: 0.8, opacity: 0, rotationY: -30 },
-            { scale: 1, opacity: 1, rotationY: 0, duration: 1.5, delay: 0.5 }
-          );
-        }
       }
     </script>
   </body>

@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FRIMPS Global Geospatial Solutions - Services</title>
+    <meta
+      name="description"
+      content="Advanced GIS, Remote Sensing, and Environmental Data Solutions for Sustainable Development"
+    />
+    <meta
+      name="keywords"
+      content="geospatial solutions, GIS mapping, remote sensing, environmental data, Ghana"
+    />
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -49,6 +58,8 @@
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="site.webmanifest" />
+
+    <!-- External Resources -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -61,6 +72,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- Resources for the globe -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
     <style>
       :root {
         --primary-blue: #0a4a7a;
@@ -273,7 +291,7 @@
         z-index: 1;
       }
 
-      /* Replace the existing #chartdiv styles with these updated ones */
+      /* Chart/Globe styles */
       #chartdiv {
         width: 500px;
         height: 500px;
@@ -284,43 +302,11 @@
         position: relative;
       }
 
-      /* Make the amChart container fill the entire #chartdiv */
       #chartdiv > div {
         width: 100% !important;
         height: 100% !important;
       }
 
-      /* Adjust the glow effect */
-      #chartdiv::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-        border-radius: 50%;
-        background: transparent;
-        box-shadow: 0 0 30px rgba(42, 157, 143, 0.4);
-        z-index: -1;
-      }
-
-      /* Update responsive styles */
-      @media screen and (max-width: 968px) {
-        #chartdiv {
-          width: 350px;
-          height: 350px;
-          margin-top: 2rem;
-        }
-      }
-
-      @media screen and (max-width: 768px) {
-        #chartdiv {
-          width: 300px;
-          height: 300px;
-        }
-      }
-
-      /* Adding a subtle glow effect around the globe */
       #chartdiv::before {
         content: "";
         position: absolute;
@@ -504,6 +490,7 @@
         margin-bottom: 1rem;
         color: white;
         font-size: 1.2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
       }
 
       .sector-list {
@@ -518,6 +505,12 @@
         border-radius: 20px;
         font-size: 0.8rem;
         backdrop-filter: blur(10px);
+        transition: var(--transition);
+      }
+
+      .sector-item:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
       }
 
       /* Expanded GIS Content */
@@ -668,7 +661,7 @@
         padding-left: 5px;
       }
 
-      /* Social Icons */
+      /* Social Icons - FIXED */
       .social-icons {
         display: flex;
         gap: 1rem;
@@ -676,7 +669,7 @@
       }
 
       .social-icon {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         width: 40px;
@@ -730,6 +723,16 @@
         .service-details {
           grid-template-columns: 1fr;
         }
+
+        .service-point {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .point-icon {
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
       }
 
       @media screen and (max-width: 768px) {
@@ -768,14 +771,19 @@
           height: 300px;
         }
 
-        .service-point {
+        .process-step {
           flex-direction: column;
           text-align: center;
         }
 
-        .point-icon {
+        .step-number {
           margin-right: 0;
           margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
         }
 
         /* Hamburger animation when active */
@@ -791,13 +799,26 @@
           transform: translateY(-8px) rotate(-45deg);
         }
       }
-    </style>
 
-    <!-- Resources for the globe -->
-    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
-    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+      @media screen and (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .section-header h2 {
+          font-size: 2rem;
+        }
+
+        .services-grid,
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sector-list {
+          justify-content: center;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -1128,7 +1149,7 @@
             specific challenges and drive informed decision-making.
           </p>
           <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
             <a href="#" class="btn btn-secondary">View Our Portfolio</a>
           </div>
         </div>
@@ -1139,9 +1160,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <span style="font-size: 24px; font-weight: bold; color: white"
-            >FGGS</span
-          >
+          <img src="images/logo/logo.png" alt="FGGS Logo" height="60" />
           <p>
             Transforming data into geospatial intelligence for sustainable
             development and decision-making.
@@ -1199,8 +1218,6 @@
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
       // Initialize the rotating globe
       am4core.ready(function () {
@@ -1245,10 +1262,10 @@
         graticuleSeries.mapLines.template.line.strokeOpacity = 0.08;
         graticuleSeries.fitExtent = false;
 
-        // Configure background - UPDATED FOR BETTER VISIBILITY
+        // Configure background
         chart.backgroundSeries.mapPolygons.template.polygon.fillOpacity = 0.1;
         chart.backgroundSeries.mapPolygons.template.polygon.fill =
-          am4core.color("transparent"); // Changed to transparent
+          am4core.color("transparent");
 
         // Create hover state and set alternative fill color
         var hs = polygonTemplate.states.create("hover");
@@ -1309,8 +1326,8 @@
         // Close mobile menu when clicking on a link
         document.querySelectorAll(".nav-link").forEach((link) => {
           link.addEventListener("click", function () {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
+            if (hamburger) hamburger.classList.remove("active");
+            if (navMenu) navMenu.classList.remove("active");
             document.body.style.overflow = "auto"; // Re-enable scrolling
           });
         });
@@ -1330,29 +1347,35 @@
         });
       }
 
-      // Scroll animations using GSAP
+      // Scroll animations using Intersection Observer
       function initScrollAnimations() {
-        // Animate elements when they come into view
         const animatedElements = document.querySelectorAll(
           ".service-card, .process-step, .service-point, .visual-container, .content-card"
         );
 
-        // Use GSAP with ScrollTrigger for animations
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const animation = entry.target.getAttribute("data-animation");
+                if (animation) {
+                  entry.target.classList.add(
+                    "animate__animated",
+                    ...animation.split(" ")
+                  );
+                }
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        // Observe all animated elements
         animatedElements.forEach((element) => {
-          gsap.fromTo(
-            element,
-            { y: 50, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              scrollTrigger: {
-                trigger: element,
-                start: "top 85%",
-                toggleActions: "play none none none",
-              },
-            }
-          );
+          observer.observe(element);
         });
       }
 
@@ -1364,19 +1387,19 @@
         );
         serviceCards.forEach((card) => {
           card.addEventListener("mouseenter", function () {
-            gsap.to(this, { y: -10, duration: 0.3 });
-            gsap.to(this.querySelector(".service-icon"), {
-              scale: 1.1,
-              duration: 0.3,
-            });
+            this.style.transform = "translateY(-10px)";
+            const icon = this.querySelector(".service-icon");
+            if (icon) {
+              icon.style.transform = "scale(1.1)";
+            }
           });
 
           card.addEventListener("mouseleave", function () {
-            gsap.to(this, { y: 0, duration: 0.3 });
-            gsap.to(this.querySelector(".service-icon"), {
-              scale: 1,
-              duration: 0.3,
-            });
+            this.style.transform = "translateY(0)";
+            const icon = this.querySelector(".service-icon");
+            if (icon) {
+              icon.style.transform = "scale(1)";
+            }
           });
         });
       }
@@ -1384,18 +1407,20 @@
       // Hero section animation
       function initHeroAnimation() {
         // Animate hero text
-        gsap.fromTo(
-          ".hero-title, .hero-subtitle",
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.2, stagger: 0.2 }
-        );
+        document
+          .querySelector(".hero-title")
+          .classList.add("animate__fadeInDown");
+        document
+          .querySelector(".hero-subtitle")
+          .classList.add("animate__fadeInUp");
 
-        // Animate buttons
-        gsap.fromTo(
-          ".hero-buttons a",
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, delay: 0.8 }
-        );
+        // Animate buttons with delay
+        setTimeout(() => {
+          const buttons = document.querySelectorAll(".hero-buttons a");
+          buttons.forEach((button) => {
+            button.classList.add("animate__fadeIn");
+          });
+        }, 300);
       }
     </script>
   </body>

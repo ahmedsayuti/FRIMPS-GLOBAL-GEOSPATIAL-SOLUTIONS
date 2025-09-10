@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | FRIMPS Global Geospatial Solutions</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+    <!-- Apple Touch Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="apple-touch-icon-180x180.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="apple-touch-icon-144x144.png"
+    />
+
+    <!-- Android Chrome -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="android-chrome-512x512.png"
+    />
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#7ed321" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+
+    <!-- Theme colors -->
+    <meta name="theme-color" content="#7ed321" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+      /* Base styles and variables */
+      :root {
+        --primary-blue: #0a4a7a;
+        --secondary-blue: #1c6ea5;
+        --accent-green: #2a9d8f;
+        --dark-green: #1d5850;
+        --light-beige: #f4f1de;
+        --dark-text: #333333;
+        --light-text: #ffffff;
+        --gray-bg: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: var(--gray-bg);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        transform: translateY(-2px);
+      }
+
+      /* Navigation styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--primary-blue);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-green);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .contact-btn {
+        background-color: var(--accent-green);
+        color: white;
+        padding: 8px 20px;
+        border-radius: var(--border-radius);
+      }
+
+      .contact-btn:hover {
+        background-color: var(--dark-green);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-blue);
+        margin: 3px 0;
+        transition: var(--transition);
+        display: block;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        color: var(--light-text);
+        padding: 12rem 2rem 6rem;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--light-text);
+      }
+
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        font-size: 1rem;
+      }
+
+      .breadcrumb li {
+        margin: 0 0.5rem;
+      }
+
+      .breadcrumb li:not(:last-child)::after {
+        content: ">";
+        margin-left: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .breadcrumb a {
+        color: rgba(255, 255, 255, 0.9);
+        transition: var(--transition);
+      }
+
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+
+      /* Contact Section */
+      .contact-section {
+        max-width: 1200px;
+        margin: 0 auto 6rem;
+        padding: 0 2rem;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 6rem;
+      }
+
+      .contact-info {
+        background: white;
+        padding: 3rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .contact-info h2 {
+        color: var(--primary-blue);
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      .contact-details {
+        margin-bottom: 3rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(42, 157, 143, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+        flex-shrink: 0;
+      }
+
+      .contact-icon i {
+        color: var(--accent-green);
+        font-size: 1.2rem;
+      }
+
+      .contact-text h4 {
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-text p {
+        color: var(--dark-text);
+      }
+
+      .business-hours {
+        margin-top: 3rem;
+      }
+
+      .business-hours h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+      }
+
+      .hours-list {
+        list-style: none;
+      }
+
+      .hours-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .hours-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* Contact Form */
+      .contact-form-container {
+        background: white;
+        padding: 3rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+
+      .contact-form-container h2 {
+        color: var(--primary-blue);
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--dark-text);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-family: "Open Sans", sans-serif;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--accent-green);
+        box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        max-width: 1000px;
+        margin: 0 auto 6rem;
+        padding: 0 2rem;
+      }
+
+      .faq-section h2 {
+        text-align: center;
+        color: var(--primary-blue);
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+      }
+
+      .faq-list {
+        list-style: none;
+      }
+
+      .faq-item {
+        background: white;
+        margin-bottom: 1rem;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+      }
+
+      .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--primary-blue);
+        transition: var(--transition);
+      }
+
+      .faq-question:hover {
+        background-color: rgba(10, 74, 122, 0.05);
+      }
+
+      .faq-question i {
+        transition: var(--transition);
+      }
+
+      .faq-answer {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        color: var(--dark-text);
+        line-height: 1.7;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 0 1.5rem 1.5rem;
+      }
+
+      .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+      }
+
+      /* Map Section */
+      .map-section {
+        margin-bottom: 6rem;
+        padding: 0 2rem;
+      }
+
+      .map-section h2 {
+        text-align: center;
+        color: var(--primary-blue);
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+      }
+
+      .map-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 400px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-blue);
+        color: var(--light-text);
+        padding: 4rem 2rem 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1.5rem;
+        color: var(--light-text);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-section ul li a {
+        transition: var(--transition);
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--accent-green);
+        padding-left: 5px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: var(--accent-green);
+        transform: translateY(-3px);
+      }
+
+      .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Responsive design */
+      @media screen and (max-width: 968px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background-color: white;
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          padding: 2rem 0;
+          gap: 0;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 1.5rem 0;
+        }
+
+        .page-header {
+          padding: 10rem 2rem 4rem;
+        }
+
+        .page-header h1 {
+          font-size: 2.5rem;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Section -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <img src="images/logo/logo.png" alt="FGGS Logo" height="80" />
+          </a>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="services.html" class="nav-link">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="media.html" class="nav-link">Media & Recognition</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link contact-btn">Contact Us</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>Contact Us</h1>
+      <ul class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li>Contact</li>
+      </ul>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Our Location</h4>
+                <p>123 Geospatial Avenue, East Legon, Accra, Ghana</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone Number</h4>
+                <p>+233 24 562 6598</p>
+                <p>+233 50 123 4567</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email Address</h4>
+                <p>info@fggsgeospatial.com</p>
+                <p>support@fggsgeospatial.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="business-hours">
+            <h3>Business Hours</h3>
+            <ul class="hours-list">
+              <li><span>Monday - Friday</span> <span>8:00 AM - 5:00 PM</span></li>
+              <li><span>Saturday</span> <span>9:00 AM - 1:00 PM</span></li>
+              <li><span>Sunday</span> <span>Closed</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm" action="https://formspree.io/f/mvgakjww" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="gis-mapping">GIS Mapping & Analysis</option>
+                <option value="remote-sensing">Remote Sensing</option>
+                <option value="environmental">Environmental Data Solutions</option>
+                <option value="consulting">Geospatial Consulting</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>What types of geospatial services do you offer?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a comprehensive range of geospatial services including GIS mapping and analysis, remote sensing, environmental data solutions, and geospatial consulting. Our services cater to various industries such as agriculture, urban planning, environmental management, and resource exploration.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>How long does a typical project take to complete?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Project timelines vary depending on the scope and complexity. Simple mapping projects might take 1-2 weeks, while comprehensive geospatial analysis projects can take several months. After discussing your specific needs, we'll provide a detailed timeline during the proposal stage.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>Do you work with international clients?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we serve clients worldwide. While we're based in Ghana, we have successfully completed projects for clients across Africa, Europe, and North America. We utilize digital collaboration tools to ensure seamless communication regardless of location.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>What file formats do you work with?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We work with all standard geospatial file formats including Shapefile, GeoJSON, KML, GeoTIFF, and CAD files. We're also experienced with data from various satellite platforms and can work with proprietary formats from ESRI, Google, and other providers.</p>
+          </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>Can you help with custom GIS application development?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We specialize in developing custom GIS applications tailored to your specific needs. Our solutions range from web-based mapping applications to mobile data collection tools and enterprise GIS systems integrated with your existing infrastructure.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>What is your pricing structure?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We offer both project-based pricing and retainer models depending on your needs. After understanding your requirements, we'll provide a detailed quote outlining costs. We believe in transparent pricing with no hidden fees.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>Do you provide training services?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we offer comprehensive training programs on various geospatial technologies. Our training can be tailored to different skill levels, from beginner to advanced users, and can cover specific software platforms or analytical techniques.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            <span>How do you ensure data security and confidentiality?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We take data security seriously. All sensitive data is encrypted both in transit and at rest. We're happy to sign NDAs and can arrange secure data transfer methods. Our team follows strict confidentiality protocols to protect your information.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <h2>Our Location</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.755816340885!2d-0.186867925583156!3d5.614943794365235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9c7d7ef594b7%3A0x4bf5c7ef7de9c!2sEast%20Legon%2C%20Accra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="images/logo/logo.png" alt="FGGS Logo" height="60" />
+          <p>
+            Transforming data into geospatial intelligence for sustainable
+            development and decision-making.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media & Recognition</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">GIS Mapping</a></li>
+            <li><a href="#">Remote Sensing</a></li>
+            <li><a href="#">Environmental Data</a></li>
+            <li><a href="#">Geospatial Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#" class="social-icon" title="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.8,2H3.2C2.5,2,2,2.5,2,3.2v17.6c0,0.7,0.5,1.2,1.2,1.2h17.6c0.7,0,1.2-0.5,1.2-1.2V3.2C22,2.5,21.5,2,20.8,2z M8.3,19.1H5.7V9.6h2.6V19.1z M7,8.5c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S7.8,8.5,7,8.5z M19.1,19.1h-2.6v-4.6c0-1.1,0-2.5-1.5-2.5s-1.8,1.2-1.8,2.4v4.7h-2.6V9.6h2.5v1.3h0c0.4-0.7,1.3-1.5,2.7-1.5c2.9,0,3.4,1.9,3.4,4.4V19.1z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" title="Twitter">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M22.5,5.8c-0.8,0.4-1.7,0.6-2.6,0.7c0.9-0.6,1.6-1.5,1.9-2.5c-0.9,0.5-1.8,0.9-2.8,1.1c-0.8-0.9-2-1.4-3.3-1.4c-2.5,0-4.5,2-4.5,4.5c0,0.4,0,0.7,0.1,1c-3.7-0.2-7-2-9.2-4.7c-0.4,0.7-0.6,1.5-0.6,2.3c0,1.6,0.8,3,2,3.8c-0.7,0-1.4-0.2-2-0.5v0.1c0,2.2,1.5,4,3.6,4.4c-0.4,0.1-0.8,0.2-1.2,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.5,3.4c-1.7,1.3-3.8,2.1-6,2.1c-0.4,0-0.8,0-1.2-0.1c2,1.3,4.4,2.1,7,2.1c8.4,0,13-7,13-13c0-0.2,0-0.4,0-0.6C21.1,7.5,21.9,6.7,22.5,5.8z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" title="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.9,2H3.1C2.5,2,2,2.5,2,3.1v17.8c0,0.6,0.5,1.1,1.1,1.1h9.6v-7.7h-2.6v-3h2.6V9.2c0-2.6,1.6-4,3.9-4c1.1,0,2.1,0.1,2.3,0.1v2.7l-1.6,0c-1.3,0-1.5,0.6-1.5,1.5v1.9h3l-0.4,3h-2.6V22h5.1c0.6,0,1.1-0.5,1.1-1.1V3.1C22,2.5,21.5,2,20.9,2z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 FRIMPS Global Geospatial Solutions. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize when document is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation menu functionality
+        initNavigation();
+
+        // Initialize FAQ accordion
+        initFAQ();
+
+        // Initialize form handling
+        initForms();
+      });
+
+      // Navigation menu functionality
+      function initNavigation() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        // Toggle mobile menu
+        if (hamburger) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+
+            // Prevent body scrolling when menu is open
+            if (navMenu.classList.contains("active")) {
+              document.body.style.overflow = "hidden";
+            } else {
+              document.body.style.overflow = "auto";
+            }
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            if (hamburger) hamburger.classList.remove("active");
+            if (navMenu) navMenu.classList.remove("active");
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+          });
+        });
+
+        // Change navbar style on scroll
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
+            navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+          } else {
+            navbar.style.padding = "1rem 0";
+            navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+          }
+        });
+      }
+
+      // FAQ accordion functionality
+      function initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question');
+          
+          question.addEventListener('click', () => {
+            // Toggle active class on clicked item
+            item.classList.toggle('active');
+            
+            // Close other open items
+            faqItems.forEach(otherItem => {
+              if (otherItem !== item && otherItem.classList.contains('active')) {
+                otherItem.classList.remove('active');
+              }
+            });
+          });
+        });
+      }
+
+      // Form handling
+      function initForms() {
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+          contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            let isValid = true;
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+              if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = 'red';
+              } else {
+                field.style.borderColor = '#ddd';
+              }
+            });
+            
+            if (isValid) {
+              // Form is valid, submit to Formspree
+              const formData = new FormData(contactForm);
+              
+              fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                  'Accept': 'application/json'
+                }
+              })
+              .then(response => {
+                if (response.ok) {
+                  // Show success message
+                  alert('Thank you for your message! We will get back to you within 24 hours.');
+                  contactForm.reset();
+                } else {
+                  throw new Error('Form submission failed');
+                }
+              })
+              .catch(error => {
+                alert('Sorry, there was an error submitting your form. Please try again later.');
+              });
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

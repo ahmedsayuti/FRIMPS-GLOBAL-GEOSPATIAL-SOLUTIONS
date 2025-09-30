@@ -643,7 +643,42 @@
           right: 5px;
         }
       }
+      /* Pause indicator styles */
+      .carousel-pause-indicator {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--dark-text);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
+      .carousel-pause-indicator.active {
+        opacity: 1;
+      }
+
+      .pause-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-green);
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
       /* Keep existing testimonial text and author styles */
       .testimonial-text {
         font-style: italic;
@@ -653,7 +688,7 @@
       }
 
       .testimonial-text::before {
-        content: """;
+        content: '"';
         position: absolute;
         left: 0;
         top: -10px;
@@ -699,7 +734,11 @@
 
       /* Newsletter Section */
       .newsletter {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--secondary-blue) 100%
+        );
         color: var(--light-text);
         text-align: center;
         padding: 5rem 2rem;
@@ -1463,6 +1502,11 @@
         <!-- Carousel Controls -->
         <button class="carousel-btn carousel-btn-prev">&#10094;</button>
         <button class="carousel-btn carousel-btn-next">&#10095;</button>
+        <!-- Add this after the carousel buttons -->
+        <div class="carousel-pause-indicator" id="pauseIndicator">
+          <div class="pause-dot"></div>
+          <span>Auto-scroll paused</span>
+        </div>
       </div>
     </section>
 
@@ -2021,18 +2065,21 @@
           easing: "easeOutCubic",
         });
       }
-      // Initialize testimonial carousel - Continuous Scroll
+      // Initialize testimonial carousel - With Visual Pause Indicator
       function initTestimonialCarousel() {
         const track = document.querySelector(".carousel-track");
         const cards = document.querySelectorAll(".testimonial-card");
         const prevBtn = document.querySelector(".carousel-btn-prev");
         const nextBtn = document.querySelector(".carousel-btn-next");
+        const pauseIndicator = document.getElementById("pauseIndicator");
 
         if (!track || cards.length === 0) return;
 
         let currentIndex = 0;
         let cardsPerView = getCardsPerView();
         let autoSlideInterval;
+        let isPaused = false;
+        let pauseTimeout;
 
         function getCardsPerView() {
           return window.innerWidth <= 768 ? 1 : 3;
@@ -2048,45 +2095,98 @@
           const maxIndex = cards.length - cardsPerView;
           currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
           updateCarousel();
-          resetAutoSlide();
         }
 
         function prevSlide() {
           const maxIndex = cards.length - cardsPerView;
           currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
           updateCarousel();
-          resetAutoSlide();
         }
-
-        // Event listeners for buttons
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
 
         // Auto-slide functionality
         function startAutoSlide() {
-          autoSlideInterval = setInterval(nextSlide, 5000); // Change every 5 seconds
+          stopAutoSlide();
+
+          autoSlideInterval = setInterval(() => {
+            if (!isPaused) {
+              nextSlide();
+            }
+          }, 5000);
         }
 
-        function resetAutoSlide() {
-          clearInterval(autoSlideInterval);
-          startAutoSlide();
-        }
-
-        // Pause auto-slide on hover
-        const carousel = document.querySelector(".testimonial-carousel");
-        if (carousel) {
-          carousel.addEventListener("mouseenter", () => {
+        function stopAutoSlide() {
+          if (autoSlideInterval) {
             clearInterval(autoSlideInterval);
-          });
-
-          carousel.addEventListener("mouseleave", startAutoSlide);
+            autoSlideInterval = null;
+          }
         }
+
+        // Pause auto-slide for 10 seconds on interaction
+        function pauseForTenSeconds() {
+          if (pauseTimeout) {
+            clearTimeout(pauseTimeout);
+          }
+
+          isPaused = true;
+          stopAutoSlide();
+
+          // Show pause indicator
+          if (pauseIndicator) {
+            pauseIndicator.classList.add("active");
+          }
+
+          pauseTimeout = setTimeout(() => {
+            isPaused = false;
+
+            // Hide pause indicator
+            if (pauseIndicator) {
+              pauseIndicator.classList.remove("active");
+            }
+
+            startAutoSlide();
+          }, 10000);
+        }
+
+        // Event listeners for buttons
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            nextSlide();
+            pauseForTenSeconds();
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            prevSlide();
+            pauseForTenSeconds();
+          });
+        }
+
+        // Pause on hover over testimonial cards
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", pauseForTenSeconds);
+        });
+
+        // Keyboard navigation with pause
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") {
+            prevSlide();
+            pauseForTenSeconds();
+          } else if (e.key === "ArrowRight") {
+            nextSlide();
+            pauseForTenSeconds();
+          }
+        });
 
         // Handle window resize
         function handleResize() {
           cardsPerView = getCardsPerView();
-          currentIndex = 0; // Reset to first slide on resize
+          currentIndex = 0;
           updateCarousel();
+
+          if (!isPaused) {
+            startAutoSlide();
+          }
         }
 
         window.addEventListener("resize", handleResize);
@@ -2109,14 +2209,11 @@
           observer.observe(card);
         });
 
-        // Start auto-slide
+        // Start auto-slide initially
         startAutoSlide();
-
-        // Initial update
         updateCarousel();
       }
 
-      // Call this function in your main initialization
       initTestimonialCarousel();
     </script>
   </body>
